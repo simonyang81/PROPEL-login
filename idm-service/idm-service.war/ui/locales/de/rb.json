@@ -1,0 +1,75 @@
+{
+  "rtl": "false",
+  "login": {
+    "title": "Anmelden",
+    "username": "Benutzername",
+    "password": "Kennwort",
+    "login": "Anmelden",
+    "error": {
+      "invalid_credentials": "Ungültiger Benutzername oder Kennwort",
+      "invalid_token": "Das Anforderungstoken ist ungültig. Es wurde bereits verwendet oder ist abgelaufen. Kehren Sie zu der Website oder Anwendung zurück, von der aus Sie hierhin gelangt sind, und versuchen Sie es erneut.",
+      "service_unavailable": "Der Dienst ist zurzeit nicht verfügbar. Versuchen Sie es später noch einmal."
+    }
+  },
+  "logout": {
+    "title": "Abmelden",
+    "closeWindow": "Fenster schließen",
+    "message": "Sie wurden abgemeldet.",
+    "footer": "Wenn diese Fehlermeldung irrtümlicherweise angezeigt wird, wenden Sie sich an Ihren Administrator.",
+    "simple": {
+      "message": "Schließen Sie das Browserfenster. Dadurch wird verhindert, dass eine andere Person im Browser auf die Schaltfläche ''Zurück'' klicken und möglicherweise vertrauliche Informationen anzeigen kann."
+    }
+  },
+  "security": {
+    "labels": {
+      "UNCLASSIFIED": "",
+      "UNCLASSIFIED_FOUO": "FOUO (Nur für den Dienstgebrauch)",
+      "CONFIDENTIAL_FOUO": "VERTRAULICH-FOUO",
+      "CONFIDENTIAL": "VERTRAULICH",
+      "CONFIDENTIAL_NOFORN": "VERTRAULICH-NOFORN",
+      "UNCLASSIFIED_NOFORN": "NOFORN (Nicht für ausländische Staatsbürger)",
+      "FOUO": "FOUO (Nur für den Dienstgebrauch)",
+      "NOFORN": "NOFORN (Nicht für ausländische Staatsbürger)",
+      "SECRET": "GEHEIM",
+      "TOPSECRET": "STRENG GEHEIM"
+    },
+    "proceed": "Fortfahren"
+  },
+  "common": {
+    "privacyStmt": "Datenschutzbestimmungen",
+    "back": "Zurück",
+    "loader": {
+      "message": "Inhalte werden geladen"
+    }
+  },
+  "error": {
+    "title": "Oh nein! Es ist ein Fehler aufgetreten...",
+    "detail": "Beim Verbindungsaufbau mit dem Dienst ist ein Fehler aufgetreten.",
+    "explanation": "Normalerweise deutet dies auf einen unerwarteten Fehler hin, der während der Verarbeitung Ihrer Anfrage aufgetreten ist. Überprüfen Sie den URL, um sicherzustellen, dass der Pfad korrekt ist. Führen Sie dann die Anforderung erneut aus. Tritt der Fehler erneut auf, wenden Sie sich an den zuständigen Administrator."
+  },
+  "invalidToken": {
+    "title": "Ungültiges Token.",
+    "detail": "Das Anforderungstoken ist ungültig. Es wurde bereits verwendet oder ist abgelaufen.",
+    "explanation": "Normalerweise deutet dies auf ein Problem mit dem verwendeten Anforderungstoken hin. Kehren Sie zu Website oder Anwendung zurück, von der aus Sie hierhin gelangt sind, und versuchen Sie es erneut. Tritt der Fehler erneut auf, wenden Sie sich an den zuständigen Administrator."
+  },
+  "invalidTenant": {
+    "title": "Ungültiger Mandant.",
+    "detail": "Der angegebene Mandant ist nicht vorhanden oder ist ungültig.",
+    "explanation": "Normalerweise deutet dies auf ein Fehler während der Anmeldung hin. Überprüfen Sie, ob Sie die Anmeldeinformationen korrekt eingegeben haben, und ob Sie auf die korrekte Organisation zuzugreifen. Führen Sie dann die Anforderung erneut aus. Tritt der Fehler erneut auf, wenden Sie sich an den zuständigen Administrator."
+  },
+  "serviceUnavailable": {
+    "title": "Dienst nicht verfügbar.",
+    "detail": "Beim Verbindungsaufbau mit dem Dienst ist ein Fehler aufgetreten. Versuchen Sie es später noch einmal.",
+    "explanation": "Normalerweise bedeutet dies, dass der Dienst gerade gewartet wird oder ein unerwarteter Fehler während der Anforderungsverarbeitung aufgetreten ist. Überprüfen Sie den URL, um sicherzustellen, dass der Pfad korrekt ist. Führen Sie dann die Anforderung erneut aus. Tritt der Fehler erneut auf, wenden Sie sich an den zuständigen Administrator."
+  },
+  "invalidCredentials": {
+    "title": "Ungültige Anmeldeinformationen.",
+    "detail": "Es ist ein Problem mit Ihren Anmeldeinformationen aufgetreten.",
+    "explanation": "Normalerweise deutet dies auf ein Fehler während der Anmeldung hin. Stellen Sie sicher, dass Sie die Anmeldeinformationen korrekt eingegeben haben. Führen Sie dann die Anforderung erneut aus. Tritt der Fehler erneut auf, wenden Sie sich an den zuständigen Administrator."
+  },
+  "404": {
+    "title": "Hoppla! Sie sind vom Weg abgekommen...",
+    "detail": "Leider ist die von Ihnen gesuchte Seite nicht verfügbar.",
+    "explanation": "Die Seite, nach der Sie suchen, wurde nicht gefunden. Überprüfen Sie den URL, um sicherzustellen, dass der Pfad korrekt ist. Führen Sie dann die Anforderung erneut aus. Tritt der Fehler erneut auf, wenden Sie sich an den zuständigen Administrator."
+  }
+}

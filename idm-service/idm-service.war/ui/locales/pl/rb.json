@@ -1,0 +1,75 @@
+{
+  "rtl": "false",
+  "login": {
+    "title": "Zaloguj",
+    "username": "Nazwa użytkownika",
+    "password": "Hasło",
+    "login": "Zaloguj",
+    "error": {
+      "invalid_credentials": "Nieprawidłowa nazwa użytkownika lub hasło",
+      "invalid_token": "Token żądania jest nieprawidłowy. Być może został już użyty lub wygasł. Wróć do witryny lub aplikacji, z której nastąpiło przejście tutaj, i spróbuj ponownie.",
+      "service_unavailable": "Usługa jest obecnie niedostępna. Spróbuj ponownie później."
+    }
+  },
+  "logout": {
+    "title": "Wyloguj",
+    "closeWindow": "Zamknij okno",
+    "message": "Nastąpiło wylogowanie.",
+    "footer": "Jeśli uważasz, że przejście na tę stronę nastąpiło w wyniku błędu, skontaktuj się z administratorem.",
+    "simple": {
+      "message": "Zamknij okno przeglądarki. Uniemożliwi to niepowołanym osobom naciśnięcie przycisku ''Wstecz'' w przeglądarce i ewentualne wyświetlenie informacji poufnych."
+    }
+  },
+  "security": {
+    "labels": {
+      "UNCLASSIFIED": "",
+      "UNCLASSIFIED_FOUO": "FOUO",
+      "CONFIDENTIAL_FOUO": "CONFIDENTIAL-FOUO",
+      "CONFIDENTIAL": "CONFIDENTIAL",
+      "CONFIDENTIAL_NOFORN": "CONFIDENTIAL-NOFORN",
+      "UNCLASSIFIED_NOFORN": "NOFORN",
+      "FOUO": "FOUO",
+      "NOFORN": "NOFORN",
+      "SECRET": "SECRET",
+      "TOPSECRET": "TOP SECRET"
+    },
+    "proceed": "Kontynuuj"
+  },
+  "common": {
+    "privacyStmt": "Zasady zachowania poufności informacji",
+    "back": "Wstecz",
+    "loader": {
+      "message": "Ładowanie zawartości"
+    }
+  },
+  "error": {
+    "title": "Ojej! Coś poszło nie tak...",
+    "detail": "Wystąpił błąd podczas próby połączenia się z usługą.",
+    "explanation": "Zazwyczaj oznacza to wystąpienie nieoczekiwanego błędu podczas przetwarzania żądania. Sprawdź adres URL, aby upewnić się, że ścieżka jest poprawna. Spróbuj ponowić żądanie. Jeśli to nie pomoże, skontaktuj się z administratorem."
+  },
+  "invalidToken": {
+    "title": "Nieprawidłowy token.",
+    "detail": "Token żądania jest nieprawidłowy. Być może został już użyty lub wygasł.",
+    "explanation": "Zazwyczaj oznacza to wystąpienie problemu z tokenem żądania. Wróć do witryny lub aplikacji, z której nastąpiło przejście tutaj, i spróbuj ponownie. Jeśli to nie pomoże, skontaktuj się z administratorem."
+  },
+  "invalidTenant": {
+    "title": "Nieprawidłowa dzierżawa.",
+    "detail": "Określony dzierżawca nie istnieje lub jest niedostępny.",
+    "explanation": "Zazwyczaj oznacza to wystąpienie nieoczekiwanego błędu podczas logowania. Sprawdź, czy poprawnie wprowadzasz poświadczenia i czy próbujesz uzyskać dostęp do poprawnej organizacji. Spróbuj ponowić żądanie. Jeśli to nie pomoże, skontaktuj się z administratorem."
+  },
+  "serviceUnavailable": {
+    "title": "Usługa niedostępna.",
+    "detail": "Wystąpił błąd podczas łączenia się z usługą. Spróbuj ponownie później.",
+    "explanation": "Zazwyczaj oznacza to wyłączenie usługi z powodu czynności konserwacyjnych lub wystąpienie nieoczekiwanego błędu podczas przetwarzania żądania. Sprawdź adres URL, aby upewnić się, że ścieżka jest poprawna. Spróbuj ponowić żądanie. Jeśli to nie pomoże, skontaktuj się z administratorem."
+  },
+  "invalidCredentials": {
+    "title": "Złe uwierzytelnienie.",
+    "detail": "Wystąpił problem z poświadczeniami.",
+    "explanation": "Zazwyczaj oznacza to wystąpienie nieoczekiwanego błędu podczas logowania. Sprawdź, czy poprawnie wprowadzasz poświadczenia. Spróbuj ponowić żądanie. Jeśli to nie pomoże, skontaktuj się z administratorem."
+  },
+  "404": {
+    "title": "Ojej! To chyba zła droga...",
+    "detail": "Niestety. Szukana strona jest niedostępna.",
+    "explanation": "Zazwyczaj oznacza to, że nie można znaleźć szukanej strony. Sprawdź adres URL, aby upewnić się, że ścieżka jest poprawna. Spróbuj ponowić żądanie. Jeśli to nie pomoże, skontaktuj się z administratorem."
+  }
+}

@@ -1,0 +1,18 @@
+  frequency: 1 minute
+  reporters:
+    - type: ganglia
+      durationUnit: milliseconds
+      rateUnit: seconds
+      includes:
+        - all_requests.*
+        - jvm\.memory\.heap\.used
+      useRegexFilters: true
+      frequency: 1 minute
+      host: simon.hp.com
+      port: 8649
+      spoof: 127.0.0.1:simon.hp.com
+      mode: unicast
+      ttl: 1
+      tmax: 60 s
+      dmax: 0 s
+      prefix: idm

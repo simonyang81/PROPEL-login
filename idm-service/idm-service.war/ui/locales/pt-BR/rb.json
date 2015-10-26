@@ -1,0 +1,75 @@
+{
+  "rtl": "false",
+  "login": {
+    "title": "Logon",
+    "username": "Nome de Usuário",
+    "password": "Senha",
+    "login": "Logon",
+    "error": {
+      "invalid_credentials": "Nome de Usuário ou Senha Inválida",
+      "invalid_token": "O token da requisição é inválido. Ele pode já ter sido usado ou expirou. Retornar ao site ou aplicativo que trouxe você aqui e tente de novo.",
+      "service_unavailable": "O serviço está indisponível nesse momento. Tente de novo mais tarde."
+    }
+  },
+  "logout": {
+    "title": "Logoff",
+    "closeWindow": "Fechar Janela",
+    "message": "Você foi desconectado.",
+    "footer": "Se você acredita que chegou a esta página devido a um erro, entre em contato com seu administrador.",
+    "simple": {
+      "message": "Feche a janela do seu navegador. Isso impede que alguém pressione o botão ''Voltar'' no seu navegador e veja informações confidenciais."
+    }
+  },
+  "security": {
+    "labels": {
+      "UNCLASSIFIED": "",
+      "UNCLASSIFIED_FOUO": "FOUO",
+      "CONFIDENTIAL_FOUO": "CONFIDENCIAL-FOUO",
+      "CONFIDENTIAL": "CONFIDENCIAL",
+      "CONFIDENTIAL_NOFORN": "CONFIDENCIAL-NOFORN",
+      "UNCLASSIFIED_NOFORN": "NOFORN",
+      "FOUO": "FOUO",
+      "NOFORN": "NOFORN",
+      "SECRET": "CONFIDENCIAL",
+      "TOPSECRET": "CONFIDENCIAL"
+    },
+    "proceed": "Continuar"
+  },
+  "common": {
+    "privacyStmt": "Declaração de Privacidade",
+    "back": "Voltar",
+    "loader": {
+      "message": "Carregando Conteúdo"
+    }
+  },
+  "error": {
+    "title": "Opa! Algo deu errado...",
+    "detail": "Erro ao tentar conectar ao serviço.",
+    "explanation": "Normalmente, isso significa que um erro inesperado ocorreu ao processar sua requisição. Verifique sua URL para garantir que o caminho está correto. Tente fazer sua requisição de novo. Se não funcionar, entre em contato com seu administrador."
+  },
+  "invalidToken": {
+    "title": "Token Inválido.",
+    "detail": "O token da requisição é inválido. Ele pode já ter sido usado ou expirou.",
+    "explanation": "Normalmente, isso significa que houve um problema com o token da sua requisição. Volte ao site ou aplicativo que trouxe você aqui e tente de novo. Se não funcionar, entre em contato com seu administrador."
+  },
+  "invalidTenant": {
+    "title": "Locatário Inválido.",
+    "detail": "O locatário específico não existe ou está indisponível.",
+    "explanation": "Normalmente, isso significa que um erro inesperado ocorreu ao fazer o seu logon. Verifique se inseriu suas credenciais corretamente e se está tentando acessar a organização correta. Tente fazer sua requisição de novo. Se não funcionar, entre em contato com seu administrador."
+  },
+  "serviceUnavailable": {
+    "title": "Serviço Indisponível.",
+    "detail": "Erro ao conectar ao serviço. Tente de novo mais tarde.",
+    "explanation": "Normalmente, isso significa que o serviço está inativo para manutenção ou que um erro inesperado ocorreu ao processar sua requisição. Verifique sua URL para garantir que o caminho está correto. Tente fazer sua requisição de novo. Se não funcionar, entre em contato com seu administrador."
+  },
+  "invalidCredentials": {
+    "title": "Credenciais Inválidas.",
+    "detail": "Houve um problema com suas credenciais.",
+    "explanation": "Normalmente, isso significa que um erro inesperado ocorreu ao fazer o seu logon. Verifique se está inserindo suas credenciais corretamente. Tente fazer sua requisição de novo. Se não funcionar, entre em contato com seu administrador."
+  },
+  "404": {
+    "title": "Opa! Acho que você pegou um caminho errado...",
+    "detail": "Desculpe, a página que você está procurando não está disponível.",
+    "explanation": "Normalmente, isso significa que não conseguimos encontrar a página que você está procurando. Verifique sua URL para garantir que o caminho está correto. Tente fazer sua requisição de novo. Se não funcionar, entre em contato com seu administrador."
+  }
+}

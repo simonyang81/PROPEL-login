@@ -1,0 +1,75 @@
+{
+  "rtl": "false",
+  "login": {
+    "title": "Přihlásit",
+    "username": "Jméno uživatele",
+    "password": "Heslo",
+    "login": "Přihlásit",
+    "error": {
+      "invalid_credentials": "Nesprávné jméno uživatele nebo heslo",
+      "invalid_token": "Token požadavku je neplatný. Je možné, že už byl použit nebo vypršela jeho platnost. Vraťte se na server nebo do aplikace, odkud jste se sem dostali, a zkuste to znovu.",
+      "service_unavailable": "Služba je nyní nedostupná. Zkuste to znovu později."
+    }
+  },
+  "logout": {
+    "title": "Odhlásit",
+    "closeWindow": "Zavřít okno",
+    "message": "Byli jste odhlášeni.",
+    "footer": "Domíváte-li se, že jste se na tuto stránku dostali v důsledku chyby, obraťte se na správce.",
+    "simple": {
+      "message": "Zavřete okno prohlížeče. Předejdete tak riziku, že jiný uživatel stiskne tlačítko ''Zpět'' ve vašem prohlížeči a dostane se tak k vašim důvěrným informacím."
+    }
+  },
+  "security": {
+    "labels": {
+      "UNCLASSIFIED": "",
+      "UNCLASSIFIED_FOUO": "FOUO",
+      "CONFIDENTIAL_FOUO": "DŮVĚRNÉ-FOUO",
+      "CONFIDENTIAL": "DŮVĚRNÉ",
+      "CONFIDENTIAL_NOFORN": "DŮVĚRNÉ-NOFORN",
+      "UNCLASSIFIED_NOFORN": "NOFORN",
+      "FOUO": "FOUO",
+      "NOFORN": "NOFORN",
+      "SECRET": "TAJNÉ",
+      "TOPSECRET": "PŘÍSNĚ TAJNÉ"
+    },
+    "proceed": "Pokračovat"
+  },
+  "common": {
+    "privacyStmt": "Prohlášení o ochraně osobních údajů",
+    "back": "Zpět",
+    "loader": {
+      "message": "Načítání obsahu"
+    }
+  },
+  "error": {
+    "title": "Chyba. Vyskytl se neznámý problém...",
+    "detail": "Při pokusu o připojení ke službě došlo k chybě.",
+    "explanation": "Tato zpráva obvykle znamená, že se při zpracování požadavku vyskytla neočekávaná chyba. Zkontrolujte, zda adresa URL obsahuje správnou cestu. Zkuste požadavek zopakovat. Pokud tento postup nepomůže, obraťte se na správce."
+  },
+  "invalidToken": {
+    "title": "Neplatný token.",
+    "detail": "Token požadavku je neplatný. Je možné, že už byl použit nebo vypršela jeho platnost.",
+    "explanation": "Tato zpráva obvykle znamená, že se vyskytl problém s tokenem požadavku. Vraťte se na server nebo do aplikace, odkud jste se sem dostali, a zkuste to znovu. Pokud tento postup nepomůže, obraťte se na správce."
+  },
+  "invalidTenant": {
+    "title": "Neplatný klient.",
+    "detail": "Zadaný klient neexistuje nebo není dostupný.",
+    "explanation": "Tato zpráva obvykle znamená, že při vašem přihlašování došlo k neočekávané chybě. Zkontrolujte, zda zadáváte správné přihlašovací údaje a zda se nepokoušíte získat přístup k nesprávné organizaci. Zkuste požadavek zopakovat. Pokud tento postup nepomůže, obraťte se na správce."
+  },
+  "serviceUnavailable": {
+    "title": "Služba není dostupná.",
+    "detail": "Při připojování ke službě došlo k chybě. Zkuste to znovu později.",
+    "explanation": "Tato zpráva obvykle znamená, že je služba mimo provoz kvůli údržbě nebo že při zpracování požadavku došlo k neočekávané chybě. Zkontrolujte, zda adresa URL obsahuje správnou cestu. Zkuste požadavek zopakovat. Pokud tento postup nepomůže, obraťte se na správce."
+  },
+  "invalidCredentials": {
+    "title": "Chybné přihlašovací údaje.",
+    "detail": "Vyskytl se problém s vašimi přihlašovacími údaji.",
+    "explanation": "Tato zpráva obvykle znamená, že se při vašem přihlašování vyskytla neočekávaná chyba. Zkontrolujte, zda zadáváte správné přihlašovací údaje. Zkuste požadavek zopakovat. Pokud tento postup nepomůže, obraťte se na správce."
+  },
+  "404": {
+    "title": "Chyba! Zřejmě jste použili nefunkční odkaz.",
+    "detail": "Došlo k chybě. Stránka, kterou hledáte, není k dispozici.",
+    "explanation": "Tato zpráva obvykle znamená, že se nepodařilo najít hledanou stránku. Zkontrolujte, zda adresa URL obsahuje správnou cestu. Zkuste požadavek zopakovat. Pokud tento postup nepomůže, obraťte se na správce."
+  }
+}

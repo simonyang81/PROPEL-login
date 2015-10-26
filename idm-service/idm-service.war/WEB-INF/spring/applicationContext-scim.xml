@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:task="http://www.springframework.org/schema/task"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
+        <property name="useSuffixPatternMatch" value="false" />
+    </bean>
+
+    <bean class="com.hp.ccue.identity.web.api.ValidationErrorHandling"/>
+
+    <!-- START Domain Controller classes -->
+    <bean id="organizationController" class="com.hp.ccue.identity.web.api.OrganizationController">
+        <property name="organizationService" ref="organizationService"/>
+        <property name="ldapConfigurationService" ref="ldapConfigurationService"/>
+        <property name="metadataService" ref="metadataService"/>
+        <property name="roleService" ref="roleService"/>
+        <property name="baseService" ref="baseService"/>
+        <property name="organizationAccessRules" ref="organizationAccessRules"/>
+        <property name="groupService" ref="groupService"/>
+    </bean>
+    <bean id="samlConfigController" class="com.hp.ccue.identity.web.api.SamlConfigController">
+        <property name="samlConfigService" ref="samlConfigService"/>
+    </bean>
+    <bean id="roleAndGroupController" class="com.hp.ccue.identity.web.api.RoleAndGroupController">
+        <property name="groupService" ref="groupService"/>
+        <property name="roleService" ref="roleService"/>
+        <property name="baseService" ref="baseService"/>
+    </bean>
+    <bean id="keystoneController" class="com.hp.ccue.identity.web.api.KeystoneController">
+        <property name="keystoneConfigurationService" ref="keystoneConfigurationService"/>
+    </bean>
+    <bean id="userController" class="com.hp.ccue.identity.web.api.AbstractUserController">
+        <property name="organizationAccessRules" ref="organizationAccessRules"/>
+        <property name="userService" ref="userService"/>
+    </bean>
+    <bean id="userRepresentationController" class="com.hp.ccue.identity.web.api.AbstractUserRepresentationController">
+        <property name="organizationAccessRules" ref="organizationAccessRules"/>
+        <property name="abstractUserRepresentationService" ref="userRepresentationService"/>
+    </bean>
+    <bean id="groupRepresentationController" class="com.hp.ccue.identity.web.api.AbstractGroupRepresentationController">
+        <property name="organizationAccessRules" ref="organizationAccessRules"/>
+        <property name="abstractGroupRepresentationService" ref="abstractGroupRepresentationService"/>
+    </bean>
+    <bean id="abstractGroupController" class="com.hp.ccue.identity.web.api.AbstractGroupController">
+        <property name="organizationAccessRules" ref="organizationAccessRules"/>
+        <property name="abstractGroupService" ref="abstractGroupService"/>
+    </bean>
+     <!--END Domain Controller classes -->
+
+    <!-- 
+        Turn global-method-security on so we can use the @Security annotation on the OrganizationController.
+        One thing about this configuration that I dont like is that the accessDecisionManager is created in
+        applicationContext-security.xml and needs to be set both on the global-method-security for the scim
+        components, as well as the 'access-decision-manager-ref' on the http element in applicationContext-security.xml
+    -->
+    <security:global-method-security secured-annotations="enabled" proxy-target-class="true" access-decision-manager-ref="accessDecisionManager"/>
+
+</beans>

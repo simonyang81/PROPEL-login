@@ -1,0 +1,19 @@
+{
+  "name": "mpp-pilot-theme",
+  "ignore": [
+    ".gitignore",
+    "package.json",
+    "Gruntfile.js",
+    "index.html"
+  ],
+  "version": "0.0.6",
+  "_release": "0.0.6",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.0.6",
+    "commit": "846217c031be3ab95ea580821e8d27353972e3a6"
+  },
+  "_source": "http://ftct0033g.fc.usa.hp.com:7990/scm/ccom/bower-mpp-pilot-theme.git",
+  "_target": "0.0.6",
+  "_originalSource": "git+http://ftct0033g.fc.usa.hp.com:7990/scm/ccom/bower-mpp-pilot-theme.git"
+}

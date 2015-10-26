@@ -1,0 +1,75 @@
+{
+  "rtl": "false",
+  "login": {
+    "title": "Bejelentkezés",
+    "username": "Felhasználónév",
+    "password": "Jelszó",
+    "login": "Bejelentkezés",
+    "error": {
+      "invalid_credentials": "Érvénytelen felhasználónév vagy jelszó",
+      "invalid_token": "A lekérdezés tétel érvénytelen. Lehet, hogy már felhasználták vagy lejárt. Lépjen vissza arra az oldalra vagy alkalmazásra, ahonnan érkezett és próbálja újra.",
+      "service_unavailable": "A szolgáltatás pillanatnyilag nem érhető el. Kérjük, próbálja újra később."
+    }
+  },
+  "logout": {
+    "title": "Kijelentkezés",
+    "closeWindow": "Ablak bezárása",
+    "message": "Ön kijelentkezett.",
+    "footer": "Ha úgy gondolja, hogy tévedés miatt került erre az oldalra, kérjük, lépjen kapcsolatba a rendszergazdával.",
+    "simple": {
+      "message": "Zárja be a böngésző ablakát. Ezáltal megakadályozza a ''Vissza'' gomb megnyomását és a bizalmas információk megtekintésének lehetőségét."
+    }
+  },
+  "security": {
+    "labels": {
+      "UNCLASSIFIED": "",
+      "UNCLASSIFIED_FOUO": "FOUO (Csak hivatalos használatra)",
+      "CONFIDENTIAL_FOUO": "BIZALMAS-FOUO",
+      "CONFIDENTIAL": "BIZALMAS",
+      "CONFIDENTIAL_NOFORN": "BIZALMAS-NOFORN",
+      "UNCLASSIFIED_NOFORN": "NOFORN (Idegen állampolgároknak nem kiadható)",
+      "FOUO": "FOUO (Csak hivatalos használatra)",
+      "NOFORN": "NOFORN (Idegen állampolgároknak nem kiadható)",
+      "SECRET": "TITKOS",
+      "TOPSECRET": "SZIGORÚAN TITKOS"
+    },
+    "proceed": "Tovább"
+  },
+  "common": {
+    "privacyStmt": "Adatvédelmi nyilatkozat",
+    "back": "Vissza",
+    "loader": {
+      "message": "Tartalom betöltése"
+    }
+  },
+  "error": {
+    "title": "Ó ne! Valami történt...",
+    "detail": "Hiba történt a szolgáltatáshoz való kapcsolódáskor.",
+    "explanation": "Ez általában azt jelenti, hogy a kérelem feldolgozásakor váratlan hiba történt. Ellenőrizze az URL címet, hogy helyes útvonalat követ-e. Próbálja meg elküldeni a kérelmet újra. Ha ez nem működik, kérjük, lépjen kapcsolatba a rendszergazdával."
+  },
+  "invalidToken": {
+    "title": "Érvénytelen tétel.",
+    "detail": "A lekérdezés tétel érvénytelen. Lehet, hogy már felhasználták vagy lejárt.",
+    "explanation": "Ez általában azt jelenti, hogy probléma volt a kérelem tétellel. Lépjen vissza arra az oldalra vagy alkalmazásra, ahonnan érkezett és próbálja újra. Ha ez nem működik, kérjük, lépjen kapcsolatba a rendszergazdával."
+  },
+  "invalidTenant": {
+    "title": "Érvénytelen bérlő.",
+    "detail": "A megadott bérlő nem létezik vagy nem elérhető.",
+    "explanation": "Ez általában azt jelenti, hogy a bejelentkezéskor váratlan hiba történt. Ellenőrizze, hogy helyesen adta-e meg a belépési adatait és, hogy a megfelelő szervezetbe próbál belépni. Próbálja meg elküldeni a kérelmet újra. Ha ez nem működik, kérjük, lépjen kapcsolatba a rendszergazdával."
+  },
+  "serviceUnavailable": {
+    "title": "A szolgáltatás nem elérhető.",
+    "detail": "Hiba történt a szolgáltatáshoz való kapcsolódáskor. Kérjük, próbálja újra később.",
+    "explanation": "Ez általában azt jelenti, hogy a szolgáltatás karbantartás miatt nem elérhető, vagy a kérelem feldolgozásakor váratlan hiba történt. Ellenőrizze az URL címet, hogy helyes útvonalat követ-e. Próbálja meg elküldeni a kérelmet újra. Ha ez nem működik, kérjük, lépjen kapcsolatba a rendszergazdával."
+  },
+  "invalidCredentials": {
+    "title": "Hibás belépési adatok.",
+    "detail": "Hiba történt a belépési adatok hitelesítéskor.",
+    "explanation": "Ez általában azt jelenti, hogy váratlan hiba történt a bejelentkezéskor. Ellenőrizze, hogy helyesen adta-e meg a belépési adatait. Próbálja meg elküldeni a kérelmet újra. Ha ez nem működik, kérjük, lépjen kapcsolatba a rendszergazdával."
+  },
+  "404": {
+    "title": "Hoppá! Úgy tűnik, hogy rossz irányba fordult...",
+    "detail": "Elnézést kérünk. A keresett oldal nem elérhető.",
+    "explanation": "Ez általában azt jelenti, hogy nem találtuk a keresett oldalt. Ellenőrizze az URL címet, hogy helyes útvonalat követ-e. Próbálja meg elküldeni a kérelmet újra. Ha ez nem működik, kérjük, lépjen kapcsolatba a rendszergazdával."
+  }
+}

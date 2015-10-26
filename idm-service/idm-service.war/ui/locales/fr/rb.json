@@ -1,0 +1,75 @@
+{
+  "rtl": "false",
+  "login": {
+    "title": "Connexion",
+    "username": "Nom d´utilisateur",
+    "password": "Mot de passe",
+    "login": "Connexion",
+    "error": {
+      "invalid_credentials": "Nom d´utilisateur ou mot de passe non valide",
+      "invalid_token": "Le jeton de demande n´est pas valide. Il a peut-être déjà été utilisé ou a expiré. Revenez à l´application ou au site initial et réessayez.",
+      "service_unavailable": "Le service n´est pas disponible actuellement. Réessayez ultérieurement."
+    }
+  },
+  "logout": {
+    "title": "Déconnexion",
+    "closeWindow": "Fermer la fenêtre",
+    "message": "Vous êtes désormais déconnecté.",
+    "footer": "Si vous pensez que vous avez atteint cette page par erreur, contactez votre administrateur.",
+    "simple": {
+      "message": "Fermez la fenêtre du navigateur. Il sera ainsi impossible d´afficher des informations confidentielles avec le bouton ''Retour'' du navigateur."
+    }
+  },
+  "security": {
+    "labels": {
+      "UNCLASSIFIED": "",
+      "UNCLASSIFIED_FOUO": "FOUO",
+      "CONFIDENTIAL_FOUO": "CONFIDENTIAL-FOUO",
+      "CONFIDENTIAL": "CONFIDENTIAL",
+      "CONFIDENTIAL_NOFORN": "CONFIDENTIAL-NOFORN",
+      "UNCLASSIFIED_NOFORN": "NOFORN",
+      "FOUO": "FOUO",
+      "NOFORN": "NOFORN",
+      "SECRET": "SECRET",
+      "TOPSECRET": "TOP SECRET"
+    },
+    "proceed": "Continuer"
+  },
+  "common": {
+    "privacyStmt": "Déclaration de confidentialité",
+    "back": "Précédent",
+    "loader": {
+      "message": "Chargement du contenu"
+    }
+  },
+  "error": {
+    "title": "Désolé ! Un problème s´est produit...",
+    "detail": "Une erreur s´est produite lors de la tentative de connexion au service.",
+    "explanation": "Généralement, cela signifie qu´une erreur imprévue s´est produite pendant le traitement de la demande. Vérifiez que votre URL est correcte. Renouvelez votre demande. Si elle n´aboutit pas, contactez votre administrateur."
+  },
+  "invalidToken": {
+    "title": "Jeton non valide.",
+    "detail": "Le jeton de demande de cette page n´est pas valide. Il a peut-être déjà été utilisé ou a expiré.",
+    "explanation": "Généralement, cela signifie que le jeton de demande présente un problème. Revenez à l´application ou au site initial et  renouvelez l´opération. Si elle n´aboutit pas, contactez votre administrateur."
+  },
+  "invalidTenant": {
+    "title": "Locataire non valide.",
+    "detail": "Ce locataire spécifique n´existe pas ou n´est pas disponible.",
+    "explanation": "Généralement, cela signifie qu´une erreur imprévue s´est produite lors de votre connexion. Vérifiez que les informations d´identification entrées sont correctes et que vous tentez d´accéder à la bonne organisation. Renouvelez votre demande. Si elle n´aboutit pas, contactez votre administrateur."
+  },
+  "serviceUnavailable": {
+    "title": "Service non disponible.",
+    "detail": "Une erreur s´est produite lors de la connexion au service. Veuillez réessayer ultérieurement.",
+    "explanation": "Généralement, cela signifie que le service est arrêté pour maintenance ou qu´une erreur imprévue s´est produite pendant le traitement de la demande. Vérifiez que votre URL est correcte. Renouvelez votre demande. Si elle n´aboutit pas, contactez votre administrateur."
+  },
+  "invalidCredentials": {
+    "title": "Informations d´identification erronées.",
+    "detail": "Vos informations d´identification présentent un problème.",
+    "explanation": "Généralement, cela signifie qu´une erreur imprévue s´est produite lors de votre connexion. Vérifiez que les informations d´identification entrées sont correctes. Renouvelez votre demande. Si elle n´aboutit pas, contactez votre administrateur."
+  },
+  "404": {
+    "title": "Oups ! Il semblerait que vous vous soyez égaré...",
+    "detail": "Désolé, la page que vous recherchez n´est pas disponible.",
+    "explanation": "Généralement, cela signifie que nous n´avons pas trouvé la page que vous recherchez. Vérifiez l´URL afin de vous assurer que le chemin est correct. Renouvelez votre demande. Si elle n´aboutit pas, contactez votre administrateur."
+  }
+}

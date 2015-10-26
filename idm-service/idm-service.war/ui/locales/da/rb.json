@@ -1,0 +1,75 @@
+{
+  "rtl": "false",
+  "login": {
+    "title": "Log på",
+    "username": "Brugernavn",
+    "password": "Adgangskode",
+    "login": "Log på",
+    "error": {
+      "invalid_credentials": "Ugyldigt brugernavn eller ugyldig adgangskode",
+      "invalid_token": "Det anmodede token er ugyldigt. Det anvendes muligvis allerede eller også er det udløbet. Vend tilbage til det sted eller den applikation, der sendte dig, og prøv igen.",
+      "service_unavailable": "Tjenesten er ikke tilgængelig på nuværende tidspunkt. Prøv igen senere."
+    }
+  },
+  "logout": {
+    "title": "Log af",
+    "closeWindow": "Luk vindue",
+    "message": "Du er nu logget af.",
+    "footer": "Hvis du tror, at du er kommet på denne side pga. en fejl, skal du kontakte administratoren.",
+    "simple": {
+      "message": "Luk dit browservindue. Derved forhindrer du risikoen for, at nogen trykker på knappen \"Tilbage\" i din browser og får vist fortrolige oplysninger."
+    }
+  },
+  "security": {
+    "labels": {
+      "UNCLASSIFIED": "",
+      "UNCLASSIFIED_FOUO": "FOUO (Kun til officiel brug)",
+      "CONFIDENTIAL_FOUO": "FORTROLIGT-FOUO",
+      "CONFIDENTIAL": "FORTROLIGT",
+      "CONFIDENTIAL_NOFORN": "FORTROLIGT-NOFORN",
+      "UNCLASSIFIED_NOFORN": "NOFORN ( (Må ikke udgives til udenlandske statsborgere)",
+      "FOUO": "FOUO (Kun til officiel brug)",
+      "NOFORN": "NOFORN ( (Må ikke udgives til udenlandske statsborgere)",
+      "SECRET": "HEMMELIGT",
+      "TOPSECRET": "TOP SECRET"
+    },
+    "proceed": "Fortsæt"
+  },
+  "common": {
+    "privacyStmt": "Erklæring om beskyttelse af personlige oplysninger",
+    "back": "Tilbage",
+    "loader": {
+      "message": "Indlæser indhold"
+    }
+  },
+  "error": {
+    "title": "Beklager. Noget gik galt...",
+    "detail": "Der opstod en fejl under forsøg på at oprette forbindelse til tjenesten.",
+    "explanation": "Det betyder normalt, at der opstod en uventet fejl under behandlingen af din anmodning. Kontrollér din URL-adresse for at sikre, at du har den rigtige sti. Forsøg at anmode igen. Hvis dette ikke fungerer, skal du kontakte administratoren."
+  },
+  "invalidToken": {
+    "title": "Ugyldig token.",
+    "detail": "Det anmodede token er ugyldigt. Det anvendes muligvis allerede eller også er det udløbet.",
+    "explanation": "Det betyder normalt, at der var et problem med dit anmodningstoken. Gå tilbage til det sted eller den applikation, der sendte dig, og prøv igen. Hvis dette ikke fungerer, skal du kontakte administratoren."
+  },
+  "invalidTenant": {
+    "title": "Ugyldig lejer.",
+    "detail": "Den specifikke lejer findes ikke eller er ugyldig.",
+    "explanation": "Det betyder normalt, at der opstod en uventet fejl, da du loggede på. Kontrollér, at du har indtastet legitimationsoplysningerne korrekt, og at du forsøger at oprette forbindelse til den korrekte organisation. Forsøg at anmode igen. Hvis dette ikke fungerer, skal du kontakte administratoren."
+  },
+  "serviceUnavailable": {
+    "title": "Tjenesten ikke tilgængelig.",
+    "detail": "Der opstod en fejl under forsøg på at oprette forbindelse til tjenesten. Prøv igen senere.",
+    "explanation": "Det betyder normalt, at tjenesten er nede pga. vedligeholdelse, eller at der opstod en uventet fejl under behandlingen af din anmodning. Kontrollér din URL-adresse for at sikre, at du har den rigtige sti. Forsøg at anmode igen. Hvis dette ikke fungerer, skal du kontakte administratoren."
+  },
+  "invalidCredentials": {
+    "title": "Legitimationsoplysningerne er forkerte.",
+    "detail": "Der opstod et problem med dine legitimationsoplysninger.",
+    "explanation": "Det betyder normalt, at der opstod en uventet fejl, da du loggede på. Kontrollér, at du indtaster legitimationsoplysningerne korrekt. Forsøg at anmode igen. Hvis dette ikke fungerer, skal du kontakte administratoren."
+  },
+  "404": {
+    "title": "Ups! Det ser ud som om, du har valgt forkert...",
+    "detail": "Beklager. Den side, du har valgt, er ikke tilgængelig.",
+    "explanation": "Det betyder normalt, at vi ikke kunne finde den side, du søger efter. Kontrollér din URL-adresse for at sikre, at du har den rigtige sti. Forsøg at anmode igen. Hvis dette ikke fungerer, skal du kontakte administratoren."
+  }
+}

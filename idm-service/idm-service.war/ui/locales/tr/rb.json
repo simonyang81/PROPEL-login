@@ -1,0 +1,75 @@
+{
+  "rtl": "false",
+  "login": {
+    "title": "Oturum Aç",
+    "username": "Kullanıcı Adı",
+    "password": "Parola",
+    "login": "Oturum Aç",
+    "error": {
+      "invalid_credentials": "Geçersiz Kullanıcı Adı veya Parola",
+      "invalid_token": "İstek belirteci geçersiz. Zaten kullanılmış veya süresi geçmiş olabilir. Sizi buraya yönlendiren siteye veya uygulamaya geri dönün ve yeniden deneyin.",
+      "service_unavailable": "Hizmet şu anda kullanılamıyor. Lütfen daha sonra yeniden deneyin."
+    }
+  },
+  "logout": {
+    "title": "Oturumu Kapat",
+    "closeWindow": "Pencereyi Kapat",
+    "message": "Şu Anda Oturumunuz Kapatıldı.",
+    "footer": "Bu sayfaya bir hata nedeniyle geldiğinizi düşünüyorsanız, lütfen yöneticinizle temas kurun.",
+    "simple": {
+      "message": "Lütfen tarayıcı pencerenizi kapatın. Bu, birinin tarayıcınızdaki ''Geri'' düğmesine basma veya gizli bilgileri görüntüleme olasılığını önler."
+    }
+  },
+  "security": {
+    "labels": {
+      "UNCLASSIFIED": "",
+      "UNCLASSIFIED_FOUO": "FOUO (Resmi Hizmete Mahsustur)",
+      "CONFIDENTIAL_FOUO": "ÖZEL-FOUO",
+      "CONFIDENTIAL": "ÖZEL",
+      "CONFIDENTIAL_NOFORN": "ÖZEL-NOFORN",
+      "UNCLASSIFIED_NOFORN": "NOFORN (Diğer Ülkeler için Serbest Değil)",
+      "FOUO": "FOUO (Resmi Hizmete Mahsustur)",
+      "NOFORN": "NOFORN (Diğer Ülkeler için Serbest Değil)",
+      "SECRET": "GİZLİ",
+      "TOPSECRET": "ÇOK GİZLİ"
+    },
+    "proceed": "Devam Et"
+  },
+  "common": {
+    "privacyStmt": "Gizlilik Bildirimi",
+    "back": "Geri",
+    "loader": {
+      "message": "İçerik Yükleniyor"
+    }
+  },
+  "error": {
+    "title": "Olamaz! Birşeyler yanlış gitti...",
+    "detail": "Hizmete bağlanmaya çalışılırken bir hata oluştu.",
+    "explanation": "Bu, genellikle isteğiniz işlenirken beklenmeyen bir hata meydana geldiği anlamına gelir. Doğru yola sahip olduğunuzdan emin olmak için URL'nizi kontrol edin. İsteğinizi yeniden deneyin. Bu işe yaramazsa lütfen yöneticinizle temas kurun."
+  },
+  "invalidToken": {
+    "title": "Geçersiz Belirteç.",
+    "detail": "İstek belirteci geçersiz. Zaten kullanılmış veya süresi geçmiş olabilir.",
+    "explanation": "Bu, genellikle istek belirtecinizde bir sorun olduğu anlamına gelir. Sizi buraya yönlendiren siteye veya uygulamaya geri gidin ve yeniden deneyin. Bu işe yaramazsa lütfen yöneticinizle temas kurun."
+  },
+  "invalidTenant": {
+    "title": "Geçersiz Kiracı.",
+    "detail": "Özgün kiracı mevcut değil ya da kullanılamıyor.",
+    "explanation": "Bu, genellikle oturumunuz açılırken beklenmeyen bir hata olduğu anlamına gelir. Kimlik bilgilerinizi doğru girdiğinizi ve doğru organizasyona erişmeye çalıştığınızı kontrol edin. İsteğinizi yeniden deneyin. Bu işe yaramazsa lütfen yöneticinizle temas kurun."
+  },
+  "serviceUnavailable": {
+    "title": "Hizmet Kullanılamıyor.",
+    "detail": "Hizmete bağlanırken bir hata oluştu. Lütfen daha sonra yeniden deneyin.",
+    "explanation": "Bu, genellikle hizmetin bakım için kapalı olduğu veya isteğiniz işlenirken beklenmeyen bir hata meydana geldiği anlamına gelir. Doğru yola sahip olduğunuzdan emin olmak için URL'nizi kontrol edin. İsteğinizi yeniden deneyin. Bu işe yaramazsa lütfen yöneticinizle temas kurun."
+  },
+  "invalidCredentials": {
+    "title": "Yanlış Kimlik Bilgileri.",
+    "detail": "Kimlik bilgilerinizle ilgili bir hata var.",
+    "explanation": "Bu, genellikle oturumunuz açılırken beklenmeyen bir hata olduğu anlamına gelir. Kimlik bilgilerinizi doğru girdiğinizi kontrol edin. İsteğinizi yeniden deneyin. Bu işe yaramazsa lütfen yöneticinizle temas kurun."
+  },
+  "404": {
+    "title": "Eyvah! Yanlış yola girmiş olabilirsiniz...",
+    "detail": "Üzgünüz. Aradığınız sayfa bulunamıyor.",
+    "explanation": "Bu, genellikle aradığınız sayfayı bulamadığımız anlamına gelir. Doğru yola sahip olduğunuzdan emin olmak için URL'nizi kontrol edin. İsteğinizi yeniden deneyin. Bu işe yaramazsa lütfen yöneticinizle temas kurun."
+  }
+}

@@ -1,0 +1,1 @@
+alter table ROLES_GROUPS add constraint FKB2FBF9B680047BC6 foreign key (group_id) references ABSTRACT_GROUP;

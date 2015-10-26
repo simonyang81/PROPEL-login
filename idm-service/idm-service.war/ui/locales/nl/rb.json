@@ -1,0 +1,75 @@
+{
+  "rtl": "false",
+  "login": {
+    "title": "Aanmelden",
+    "username": "Gebruikersnaam",
+    "password": "Wachtwoord",
+    "login": "Aanmelden",
+    "error": {
+      "invalid_credentials": "Ongeldige gebruikersnaam of wachtwoord",
+      "invalid_token": "De aanvraagtoken is ongeldig. Het is mogelijk al gebruikt of het is verlopen. Keer terug naar de site of de toepassing waar u vandaan komt en probeer het opnieuw.",
+      "service_unavailable": "De service is op dit moment niet beschikbaar. Probeer het later opnieuw."
+    }
+  },
+  "logout": {
+    "title": "Afmelden",
+    "closeWindow": "Venster sluiten",
+    "message": "U bent nu afgemeld.",
+    "footer": "Neem contact op met uw beheerder als u denkt dat u als gevolg van een fout op deze pagina terecht bent gekomen.",
+    "simple": {
+      "message": "Sluit uw browservenster. Hiermee voorkomt u dat iemand op de knop Vorige klikt in uw browser en mogelijk confidentiële informatie ziet."
+    }
+  },
+  "security": {
+    "labels": {
+      "UNCLASSIFIED": "",
+      "UNCLASSIFIED_FOUO": "FOUO (alleen voor officieel gebruik)",
+      "CONFIDENTIAL_FOUO": "VERTROUWELIJK-FOUO",
+      "CONFIDENTIAL": "VERTROUWELIJK",
+      "CONFIDENTIAL_NOFORN": "VERTROUWELIJK-NOFORN",
+      "UNCLASSIFIED_NOFORN": "NOFORN",
+      "FOUO": "FOUO (alleen voor officieel gebruik)",
+      "NOFORN": "NOFORN",
+      "SECRET": "GEHEIM",
+      "TOPSECRET": "TOPGEHEIM"
+    },
+    "proceed": "Doorgaan"
+  },
+  "common": {
+    "privacyStmt": "Privacyverklaring",
+    "back": "Terug",
+    "loader": {
+      "message": "Inhoud laden"
+    }
+  },
+  "error": {
+    "title": "Helaas! Er is iets misgegaan...",
+    "detail": "Er is een fout opgetreden bij het tot stand brengen van de verbinding met de service.",
+    "explanation": "Dit betekent meestal dat er een onverwachte fout is opgetreden bij de verwerking van uw aanvraag. Controleer uw URL om er zeker van te zijn dat het pad juist is. Probeer de aanvraag opnieuw. Als dat niet werkt, neemt u contact op met uw beheerder."
+  },
+  "invalidToken": {
+    "title": "Ongeldig token.",
+    "detail": "De aanvraagtoken is ongeldig. Het is mogelijk al gebruikt of het is verlopen.",
+    "explanation": "Dit betekent meestal dat er een probleem is met uw aanvraagtoken. Keer terug naar de site of de toepassing waar u vandaan komt en probeer het opnieuw. Als dat niet werkt, neemt u contact op met uw beheerder."
+  },
+  "invalidTenant": {
+    "title": "Ongeldige pachter.",
+    "detail": "De pachter bestaat niet of is niet beschikbaar.",
+    "explanation": "Dit betekent meestal dat er een onverwachte fout is opgetreden bij uw aanmelding. Controleer of u de juiste referenties hebt ingevoerd en of u zich bij de juiste organisatie probeert aan te melden. Probeer de aanvraag opnieuw. Als dat niet werkt, neemt u contact op met uw beheerder."
+  },
+  "serviceUnavailable": {
+    "title": "Service is niet beschikbaar.",
+    "detail": "Er is een fout opgetreden bij de verbinding met de service. Probeer het later opnieuw.",
+    "explanation": "Dit betekent meestal dat de service niet beschikbaar is door onderhoud of dat er een onverwachte fout is opgetreden bij de verwerking van uw aanvraag. Controleer uw URL om er zeker van te zijn dat het pad juist is. Probeer de aanvraag opnieuw. Als dat niet werkt, neemt u contact op met uw beheerder."
+  },
+  "invalidCredentials": {
+    "title": "Onjuiste referenties.",
+    "detail": "Er is een probleem met uw referenties.",
+    "explanation": "Dit betekent meestal dat er een onverwachte fout is opgetreden bij uw aanmelding. Controleer of u de juiste referenties hebt ingevoerd. Probeer de aanvraag opnieuw. Als dat niet werkt, neemt u contact op met uw beheerder."
+  },
+  "404": {
+    "title": "Sorry! Er is ergens iets misgegaan...",
+    "detail": "Het spijt ons. De pagina die u zoekt, is niet beschikbaar.",
+    "explanation": "Dit betekent meestal dat we de pagina die u zoekt, niet kunnen vinden. Controleer uw URL om er zeker van te zijn dat het pad juist is. Probeer de aanvraag opnieuw. Als dat niet werkt, neemt u contact op met uw beheerder."
+  }
+}

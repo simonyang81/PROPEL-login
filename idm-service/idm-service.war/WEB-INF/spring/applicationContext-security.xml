@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+
+    <!--
+    Overall HTTP interface security configuration
+    -->
+    <!-- START Certificate Authentication (with HP SSO) -->
+    <!--
+    <security:http pattern="/idm/v0/login" use-expressions="true" auto-config="false">
+        <security:http-basic />
+        <security:csrf disabled="true" />
+        <security:custom-filter ref="hpssoProvidedFilter" before="PRE_AUTH_FILTER" />
+        <security:custom-filter ref="hpssoIntegrationFilter" after="PRE_AUTH_FILTER" />
+        <security:custom-filter ref="requestTokenCompositeFilter" position="FIRST" />
+        <security:x509 subject-principal-regex="CN=(.*?)," user-service-ref="cacUserDetailsService" />
+        <security:custom-filter ref="cacFilter" before="LAST" />
+        <security:custom-filter ref="noPromptFilter" position="LAST" />
+    </security:http>
+
+    <bean id="cacFilter" class="com.hp.ccue.identity.filter.certificate.CertificateFilter">
+        <property name="generateTokenUtil" ref="generateTokenUtil" />
+        <property name="tokenFactory" ref="tokenFactory" />
+        <property name="tokenWriter" ref="hpssoTokenWriter" />
+        <property name="loginRedirectionHandler" ref="loginRedirectionHandler" />
+        <property name="authenticationProvider" ref="cacLdapAuthProvider" />
+    </bean>
+    -->
+    <!-- END Certificate Authentication (with HP SSO) -->
+
+    <!-- START Certificate Authentication (without HP SSO) -->
+    <!--
+    <security:http pattern="/idm/v0/login" use-expressions="true" auto-config="false">
+        <security:http-basic />
+        <security:csrf disabled="true" />
+        <security:custom-filter ref="requestTokenCompositeFilter" position="FIRST" />
+        <security:x509 subject-principal-regex="CN=(.*?)," user-service-ref="cacUserDetailsService" />
+        <security:custom-filter ref="cacFilter" before="LAST" />
+        <security:custom-filter ref="noPromptFilter" position="LAST" />
+    </security:http>
+
+    <bean id="cacFilter" class="com.hp.ccue.identity.filter.certificate.CertificateFilter">
+        <property name="generateTokenUtil" ref="generateTokenUtil" />
+        <property name="tokenFactory" ref="tokenFactory" />
+        <property name="loginRedirectionHandler" ref="loginRedirectionHandler" />
+        <property name="authenticationProvider" ref="cacLdapAuthProvider" />
+    </bean>
+    -->
+    <!-- END Certificate Authentication (without HP SSO) -->
+
+    <!-- START SiteMinder SSO (without HP SSO) -->
+    <!--
+    <security:http pattern="/idm/v0/login" use-expressions="true" auto-config="false">
+        <security:http-basic />
+        <security:csrf disabled="true" />
+        <security:custom-filter ref="requestTokenCompositeFilter" position="FIRST" />
+        <security:custom-filter ref="ssoSiteminderFilter" position="PRE_AUTH_FILTER" />
+        <security:custom-filter ref="ssoFilter" before="LAST" />
+        <security:custom-filter ref="noPromptFilter" position="LAST" />
+    </security:http>
+    -->
+    <!-- END SiteMinder SSO (without HP SSO) -->
+
+    <!-- START SiteMinder SSO (with HP SSO) -->
+    <!--
+    <security:http pattern="/idm/v0/login" use-expressions="true" auto-config="false">
+        <security:http-basic />
+        <security:csrf disabled="true" />
+        <security:custom-filter ref="requestTokenCompositeFilter" position="FIRST" />
+        <security:custom-filter ref="hpssoProvidedFilter" before="PRE_AUTH_FILTER" />
+        <security:custom-filter ref="hpssoIntegrationFilter" after="PRE_AUTH_FILTER" />
+        <security:custom-filter ref="ssoSiteminderFilter" before="CAS_FILTER" />
+        <security:custom-filter ref="ssoFilter" before="LAST" />
+        <security:custom-filter ref="noPromptFilter" position="LAST" />
+    </security:http>
+    -->
+    <!-- END SiteMinder SSO (with HP SSO) -->
+
+    <!-- START SiteMinder SSO (all) -->
+    <!--
+    <security:authentication-manager id="ssoAuthManager">
+        <security:authentication-provider ref="ssoAuthenticationProvider"/>
+    </security:authentication-manager>
+
+    <bean id="ssoSiteminderFilter" class="org.springframework.security.web.authentication.preauth.RequestHeaderAuthenticationFilter">
+        <property name="principalRequestHeader" value="SM_USER"/>
+        <property name="authenticationManager" ref="ssoAuthManager" />
+        <property name="exceptionIfHeaderMissing" value="true" />
+    </bean>
+    -->
+    <!-- START SiteMinder SSO (all) -->
+
+    <!-- START SiteMinder SSO (without HP SSO) -->
+    <!--
+    <bean id="ssoFilter" class="com.hp.ccue.identity.filter.sso.SSOFilter">
+        <property name="generateTokenUtil" ref="generateTokenUtil" />
+        <property name="tokenFactory" ref="tokenFactory" />
+        <property name="loginRedirectionHandler" ref="loginRedirectionHandler" />
+        <property name="userAndRepFactory" ref="siteMinderUserAndRepFactory" />
+    </bean>
+    -->
+    <!-- END SiteMinder SSO (without HP SSO) -->
+
+    <!-- START SiteMinder SSO (with HP SSO) -->
+    <!--
+    <bean id="ssoFilter" class="com.hp.ccue.identity.filter.sso.SSOFilter">
+        <property name="generateTokenUtil" ref="generateTokenUtil" />
+        <property name="tokenFactory" ref="tokenFactory" />
+        <property name="loginRedirectionHandler" ref="loginRedirectionHandler" />
+        <property name="tokenWriter" ref="hpssoTokenWriter" />
+        <property name="userAndRepFactory" ref="siteMinderUserAndRepFactory" />
+    </bean>
+    -->
+    <!-- END SiteMinder SSO (with HP SSO) -->
+
+    <!-- START HP SSO Configuration -->
+    <security:http pattern="/idm/v0/login" use-expressions="true" auto-config="false">
+        <security:csrf disabled="true" />
+        <security:custom-filter ref="requestTokenCompositeFilter" position="FIRST" />
+        <security:custom-filter ref="hpssoProvidedFilter" before="PRE_AUTH_FILTER" />
+        <security:custom-filter ref="hpssoIntegrationFilter" after="PRE_AUTH_FILTER" />
+        <security:custom-filter ref="noPromptFilter" before="FORM_LOGIN_FILTER" />
+        <security:http-basic />
+    </security:http>
+
+    <security:http pattern="/idm/v0/logout" use-expressions="true" auto-config="false">
+        <security:csrf disabled="true" />
+        <security:custom-filter ref="requestTokenCompositeFilter" position="FIRST" />
+        <security:custom-filter ref="hpssoProvidedFilter" before="PRE_AUTH_FILTER" />
+        <security:custom-filter ref="hpssoIntegrationFilter" after="PRE_AUTH_FILTER" />
+        <security:http-basic />
+    </security:http>
+
+	<!--
+    <bean id="hpssoFederatingProvider" class="com.hp.ccue.identity.filter.certificate.CertificateLdapAuthenticationProvider">
+        <property name="config" ref="csaAuthConfig" />
+        <property name="templateFactory" ref="csaTemplateFactory" />
+    </bean>
+
+    <security:authentication-manager id="hpssoAuthManager">
+        <security:authentication-provider ref="hpssoFederatingProvider" />
+    </security:authentication-manager>
+	-->
+
+    <bean id="hpssoProvidedFilter" class="com.hp.ccue.identity.hpssoImpl.api.HpSsoFilter" />
+
+    <bean id="hpssoIntegrationFilter" class="com.hp.ccue.identity.filter.hpsso.HpSsoFilter">
+        <!-- <constructor-arg ref="hpssoAuthManager" /> -->
+        <property name="generateTokenUtil" ref="generateTokenUtil" />
+        <property name="tokenFactory" ref="tokenFactory"/>
+        <property name="tenantFactory" ref="tenantFactory"/>
+        <property name="loginRedirectionHandler" ref="loginRedirectionHandler"/>
+    </bean>
+    
+    <bean id="hpssoVerifyWithoutRedirectFilter" class="com.hp.ccue.identity.filter.hpsso.HpSsoFilter">
+        <!--<constructor-arg ref="hpssoAuthManager" />-->
+        <property name="generateTokenUtil" ref="generateTokenUtil" />
+        <property name="tokenFactory" ref="tokenFactory"/>
+        <property name="tenantFactory" ref="tenantFactory"/>
+        <property name="redirectOnSuccess" value="false"/>
+    </bean>
+
+    <bean id="hpssoTokenWriter" class="com.hp.ccue.identity.hpsso.HpSsoCookieTokenWriter">
+        <property name="tokenStore" ref="tokenStore" />
+        <property name="tokenService" ref="tokenService" />
+        <property name="tokenFactory" ref="tokenFactory" />
+    </bean>
+    <!-- END HP SSO Configuration -->
+
+    <!-- START Simplified Logout Configuration -->
+    <!--<security:http pattern="/idm/v0/logout" use-expressions="true" auto-config="false">
+        <security:custom-filter ref="simpleLogoutRedirect" position="FIRST"/>
+        <security:http-basic />
+    </security:http>
+
+    <bean id="simpleLogoutRedirect" class="com.hp.ccue.identity.filter.RedirectFilter">
+        <property name="url" value="/idm/v0/logout/close"/>
+    </bean>-->
+    <!-- END Simplified Logout Configuration -->
+
+    <!-- START Pre Auth for SCIM APIs -->
+    <!--
+        This defines the pre-authentication scheme for the SCIM APIs. Please see:
+        http://docs.spring.io/spring-security/site/docs/3.1.7.RELEASE/reference/preauth.html
+        for more info.
+    -->
+    <security:http pattern="/api/scim/**" use-expressions="true" create-session="stateless"
+            entry-point-ref="unauthorizedEntryPoint" authentication-manager-ref="preAuthAuthenticationManager"
+            access-decision-manager-ref="accessDecisionManager">
+        <security:csrf disabled="true" />
+        <security:custom-filter ref="idmTokenPreAuthFilter" position="PRE_AUTH_FILTER" />
+    </security:http>
+
+    <security:http pattern="/api/org-info/**" use-expressions="true" create-session="stateless"
+                   entry-point-ref="unauthorizedEntryPoint" authentication-manager-ref="preAuthAuthenticationManager"
+                   access-decision-manager-ref="accessDecisionManager">
+        <security:csrf disabled="true" />
+        <security:custom-filter ref="idmTokenPreAuthFilter" position="PRE_AUTH_FILTER" />
+    </security:http>
+
+    <!-- The unauthorizedEntryPoint is used because we expect the user to be pre-authenticated prior
+         to calling the REST API's in scim. If the pre auth fails, then we dont want Spring to try to
+         redirect to login page.
+     -->
+    <bean id="unauthorizedEntryPoint" class="com.hp.ccue.identity.spring.preauth.PreAuthEntryPoint" />
+
+    <bean id="idmTokenPreAuthFilter" class="com.hp.ccue.identity.spring.preauth.PreAuthFilter">
+        <property name="authenticationManager" ref="preAuthAuthenticationManager" />
+        <property name="tokenFactory" ref="tokenFactory" />
+        <property name="checkForPrincipalChanges" value="true"/>
+        <property name="continueFilterChainOnUnsuccessfulAuthentication" value="true"/>
+    </bean>
+
+    <bean id="idmTokenUserDetailsService" class="com.hp.ccue.identity.spring.preauth.PreAuthUserDetailsService" />
+
+    <bean id="preauthAuthProvider" class="org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationProvider">
+        <property name="preAuthenticatedUserDetailsService" ref="idmTokenUserDetailsService" />
+    </bean>
+
+    <!--
+        Since this is the 2nd authentication-manager we need to use an id rather than an alias.
+        See this for why:
+        http://stackoverflow.com/questions/22118243/spring-security-3-2-multiple-http-tag-with-different-authentication-manager
+     -->
+    <security:authentication-manager id="preAuthAuthenticationManager">
+      <security:authentication-provider ref="preauthAuthProvider" />
+    </security:authentication-manager>
+
+    <!-- The next 3 beans, accessDecisionManager, roleVoter, and authenticatedVoter are needed
+         because the roles used to secure the scim API's dont all start with the prefix 'ROLE_.
+         So we need to define our own RoleVoter and set rolePrefix=""
+         Please see this article for more: http://bluefoot.info/howtos/spring-security-adding-a-custom-role-prefix/
+     -->
+    <bean id="accessDecisionManager" class="org.springframework.security.access.vote.AffirmativeBased">
+        <constructor-arg>
+            <list>
+                <ref bean="roleVoter" />
+                <ref bean="authenticatedVoter" />
+            </list>
+        </constructor-arg>
+    </bean>
+    <bean id="roleVoter" class="org.springframework.security.access.vote.RoleVoter ">
+        <property name="rolePrefix" value="" />
+    </bean>
+    <bean id="authenticatedVoter" class="org.springframework.security.access.vote.AuthenticatedVoter" />
+
+    <!-- END Pre Auth for scim APIs -->
+
+
+    <!-- Empty authentication manager to circumvent either authenticated OR unauthenticated user validation / auth. This
+     addresses problems where the default authentication manager (using integrationAuthProvider) wants to validate a 
+     MultiTenantAuthentication that was put in the security context by HpSsoFilter, containing a username and no password,
+     and doesn't NEED to be validated. -->
+    <security:authentication-manager id="publicV0AuthManager"></security:authentication-manager>
+
+    <!-- checkSession: no prompts, attempt to resolve HP SSO token -->
+    <security:http pattern="/idm/v0/public/checkSession" use-expressions="true"
+                   authentication-manager-ref="publicV0AuthManager">
+        <security:csrf disabled="true" />
+        <!-- START more HP SSO configuration -->
+        <security:custom-filter ref="hpssoProvidedFilter" before="PRE_AUTH_FILTER" />
+        <security:custom-filter ref="hpssoVerifyWithoutRedirectFilter" after="PRE_AUTH_FILTER" />
+        <!-- END more HP SSO configuration -->
+        <security:headers>
+            <!-- Allow the checkSession page to be hosted by other applications in an iframe, since there is no risk of click-jacking -->
+            <security:frame-options disabled="true" />
+        </security:headers>
+        <security:http-basic />
+    </security:http>
+
+    <!-- public v0 APIs: no prompts, attempt to resolve HP SSO token -->
+    <security:http pattern="/idm/v0/api/public/**" use-expressions="true"
+                   authentication-manager-ref="publicV0AuthManager">
+        <security:csrf disabled="true" />
+        <security:http-basic />
+    </security:http>
+    
+    <security:http pattern="/**" use-expressions="true" auto-config="true" authentication-manager-ref="authManager">
+        <security:csrf disabled="true" />
+        <security:custom-filter ref="csrfTokenPatternProxy" after="FIRST" />
+        <security:custom-filter ref="requestTokenPatternProxy" position="FIRST"/>
+        <security:intercept-url pattern="/v2.0/**" access="isAuthenticated()" />
+        <!--Allow POST to authenticate API-->
+        <security:intercept-url pattern="/idm/v0/api/**" access="isAuthenticated()" />
+        <security:intercept-url pattern="/api/scim/**" access="permitAll" />
+        <security:intercept-url pattern="/monitoring/ping" access="permitAll" />
+        <security:intercept-url pattern="/monitoring/**" access="isAuthenticated()" />
+        
+        <!-- Disallow access to /ui folder under root -->
+        <security:intercept-url pattern="/ui/**" access="denyAll" />
+        <security:http-basic />
+    </security:http>
+
+    <bean id="requestTokenCompositeFilter" class="org.springframework.web.filter.CompositeFilter">
+        <property name="filters">
+            <array>
+                <ref bean="redirectExceptionFilter"/>
+                <ref bean="requestTokenFilter"/>
+                <ref bean="authErrorRedirectFilter"/>
+                <ref bean="requestTokenValidationFilter"/>
+            </array>
+        </property>
+    </bean>
+
+    <bean id="csrfTokenFilter" class="com.hp.ccue.identity.filter.CSRFFilter" />
+
+    <bean id="csrfTokenPatternProxy" class="org.springframework.test.web.servlet.setup.PatternMappingFilterProxy">
+        <constructor-arg ref="csrfTokenFilter" />
+        <constructor-arg>
+            <array>
+                <value>/idm/v0/api/public/*</value>
+                <value>/idm/v0/login</value>
+                <value>/idm/v0/logout</value>
+            </array>
+        </constructor-arg>
+    </bean>
+
+    <bean id="requestTokenPatternProxy" class="org.springframework.test.web.servlet.setup.PatternMappingFilterProxy">
+        <constructor-arg  ref="requestTokenCompositeFilter" />
+        <constructor-arg>
+            <array>
+                <value>/idm/v0/login</value>
+                <value>/idm/v0/logout</value> <!-- Comment out for Simplified Logout Redirect -->
+            </array>
+        </constructor-arg>
+    </bean>
+
+    <!--
+    Set up an integration account AuthenticationProvider that pulls the Basic Authorization header and authenticates
+    against the users listed in the specified properties file.
+    -->
+    <bean name="integrationAuthProvider" class="com.hp.ccue.identity.seeded.IntegrationAuthenticationProvider">
+        <property name="configFile" value="integrationusers.properties" />
+        <property name="tokenFactory" ref="tokenFactory" />
+    </bean>
+
+    <!-- Set up the integration account AuthenticationProvider with Spring Security -->
+    <security:authentication-manager alias="authManager">
+        <security:authentication-provider ref="integrationAuthProvider"/>
+    </security:authentication-manager>
+
+    <!-- START HP Passport -->
+    <!--
+    <security:authentication-manager id="ssoAuthManager">
+        <security:authentication-provider ref="ssoAuthenticationProvider"/>
+    </security:authentication-manager>
+
+    <bean id="ssoSiteminderFilter" class="com.hp.ccue.identity.filter.sso.SSORequestHeaderAuthenticationFilter">
+        <property name="principalRequestHeader" value="SM_USER"/>
+        <property name="authenticationManager" ref="ssoAuthManager" />
+        <property name="exceptionIfHeaderMissing" value="true" />
+        <property name="authSourceRequestHeader" value="AuthSource" />
+    </bean>
+
+    <bean id="ssoFilter" class="com.hp.ccue.identity.filter.sso.SSOFilter">
+        <property name="generateTokenUtil" ref="generateTokenUtil" />
+        <property name="tokenFactory" ref="tokenFactory"/>
+        <property name="loginRedirectionHandler" ref="loginRedirectionHandler"/>
+    </bean>
+    -->
+    <!-- END HP Passport -->
+
+    <!--Request Token Filter-->
+    <bean id="requestTokenFilter" class="com.hp.ccue.identity.filter.RequestTokenFilter">
+        <property name="tokenService" ref="tokenService"/>
+    </bean>
+    <bean id="requestTokenValidationFilter" class="com.hp.ccue.identity.filter.RequestTokenValidationFilter">
+        <property name="tokenService" ref="tokenService"/>
+    </bean>
+    <bean id="authErrorRedirectFilter" class="com.hp.ccue.identity.filter.AuthenticationErrorRedirectionFilter">
+        <property name="tokenService" ref="tokenService"/>
+    </bean>
+    <bean id="redirectExceptionFilter" class="com.hp.ccue.identity.filter.RedirectExceptionHandlerFilter">
+        <constructor-arg>
+            <map>
+                <entry key="com.hp.ccue.identity.errors.AuthenticationFailureException" value="/idm/v0/login/invalid_credentials" />
+                <entry key="com.hp.ccue.identity.errors.AuthenticationErrorException" value="/idm/v0/login/unavailable" />
+                <entry key="com.hp.ccue.identity.errors.InvalidTokenException" value="/idm/v0/login/invalid_token" />
+                <entry key="com.hp.ccue.identity.errors.TokenKeyNotFoundException" value="/idm/v0/login/invalid_token" />
+                <entry key="java.lang.Exception" value="/idm/v0/login/error" />
+            </map>
+        </constructor-arg>
+    </bean>
+    <!--Request Token Filter-->
+
+    <!--No Prompt Filter-->
+    <!-- Wire this filter into the security configuration when SSO is used.
+         The filter looks at the query parameter 'prompt' and if the value
+         is 'none' it will reject the login request and prevent the display
+         of the login prompt. The assumption is with SSO the user should already
+         be logged in and should have been authenticated before the flow reached this
+         filter. If the flow reaches this filter there is a problem -->
+    <bean id="noPromptFilter" class="com.hp.ccue.identity.filter.NoPromptFilter" />
+
+    <!-- START Certificate Authentication / SiteMinder SSO / HP SSO Configuration -->
+
+    <bean id="loginRedirectionHandler" class="com.hp.ccue.identity.filter.LoginRedirectionHandler">
+        <property name="tokenService" ref="tokenService"/>
+    </bean>
+
+    <bean name="generateTokenUtil" class="com.hp.ccue.identity.utilities.GenerateResponseTokenUtil">
+        <property name="tenantFactory" ref="tenantFactory" />
+        <property name="userFactory" ref="userFactory" />
+        <property name="authenticationResponseFactory" ref="authenticationResponseFactory" />
+    </bean>
+
+    <!-- END Certificate Authentication / SiteMinder SSO / HP SSO Configuration -->
+</beans>

@@ -1,0 +1,1 @@
+ALTER TABLE BaseAuthenticationConfiguration RENAME to BaseAuthConfiguration;

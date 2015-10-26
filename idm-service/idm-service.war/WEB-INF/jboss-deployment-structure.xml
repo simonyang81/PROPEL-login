@@ -1,0 +1,11 @@
+<jboss-deployment-structure xmlns="urn:jboss:deployment-structure:1.0">
+    <deployment>
+        <exclusions>
+            <module name="org.apache.log4j" />
+            <module name="org.apache.httpcomponents" />
+            <module name="org.hibernate" />
+            <module name="org.jboss.logging.jul-to-slf4j-stub" />
+	        <module name="org.slf4j" />
+        </exclusions>
+    </deployment>
+</jboss-deployment-structure>

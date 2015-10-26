@@ -1,0 +1,75 @@
+{
+  "rtl": "false",
+  "login": {
+    "title": "Log In",
+    "username": "Username",
+    "password": "Password",
+    "login": "Sign In",
+    "error": {
+      "invalid_credentials": "Invalid Username or Password",
+      "invalid_token": "The request token is invalid. It may have already been used or has expired. Return to the site or application that sent you here and try again.",
+      "service_unavailable": "The service is unavailable at this time. Please try again later."
+    }
+  },
+  "logout": {
+    "title": "Log Out",
+    "closeWindow": "Close Window",
+    "message": "You Are Now Logged Out.",
+    "footer": "If you believe you have reached this page because of an error please contact your administrator.",
+    "simple": {
+      "message": "Please close your browser window. This prevents the possibility of someone pressing the ''Back'' button on your browser and possibly viewing confidential information."
+    }
+  },
+  "security": {
+    "labels": {
+      "UNCLASSIFIED": "",
+      "UNCLASSIFIED_FOUO": "FOUO",
+      "CONFIDENTIAL_FOUO": "CONFIDENTIAL-FOUO",
+      "CONFIDENTIAL": "CONFIDENTIAL",
+      "CONFIDENTIAL_NOFORN": "CONFIDENTIAL-NOFORN",
+      "UNCLASSIFIED_NOFORN": "NOFORN",
+      "FOUO": "FOUO",
+      "NOFORN": "NOFORN",
+      "SECRET": "SECRET",
+      "TOPSECRET": "TOP SECRET"
+    },
+    "proceed": "Proceed"
+  },
+  "common": {
+    "privacyStmt": "Privacy Statement",
+    "back": "Back",
+    "loader": {
+      "message": "Loading Content"
+    }
+  },
+  "error": {
+    "title": "Oh no! Something went wrong...",
+    "detail": "There was an error when trying to connect to the service.",
+    "explanation": "Usually this means that an unexpected error occurred while processing your request. Check your URL to make sure you have the correct path. Try your request again. If that doesn't work please contact your administrator."
+  },
+  "invalidToken": {
+    "title": "Invalid Token.",
+    "detail": "The request token is invalid. It may have already been used or has expired.",
+    "explanation": "Usually this means that there was a problem with your request token. Go back to the site or application that sent you here and try again. If that doesn't work please contact your administrator."
+  },
+  "invalidTenant": {
+    "title": "Invalid Tenant.",
+    "detail": "The specific tenant does not exist or is unavailable.",
+    "explanation": "Usually this means that an unexpected error occurred logging you in. Check that you are entering your credentials correctly and that you are attempting to access the correct organization. Try your request again. If that doesn't work please contact your administrator."
+  },
+  "serviceUnavailable": {
+    "title": "Service Unavailable.",
+    "detail": "There was an error connecting to the service. Please try again later.",
+    "explanation": "Usually this means that the service is down for maintenance or that an unexpected error occurred while processing your request. Check your URL to make sure you have the correct path. Try your request again. If that doesn't work please contact your administrator."
+  },
+  "invalidCredentials": {
+    "title": "Bad Credentials.",
+    "detail": "There was a problem with your credentials.",
+    "explanation": "Usually this means that an unexpected error occurred logging you in. Check that you are entering your credentials correctly. Try your request again. If that doesn't work please contact your administrator."
+  },
+  "404": {
+    "title": "Oops! It looks like you took a wrong turn...",
+    "detail": "We're sorry. The page you are looking for is not available.",
+    "explanation": "Usually this means we couldn't find the page you were looking for. Check your URL to make sure you have the correct path. Try your request again. If that doesn't work please contact your administrator."
+  }
+}

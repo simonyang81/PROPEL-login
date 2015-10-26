@@ -1,0 +1,75 @@
+{
+  "rtl": "false",
+  "login": {
+    "title": "登录",
+    "username": "用户名",
+    "password": "密码",
+    "login": "登录",
+    "error": {
+      "invalid_credentials": "用户名或密码无效",
+      "invalid_token": "请求令牌无效。它可能已被使用或已过期。请返回到您原来的站点或应用程序，然后重试。",
+      "service_unavailable": "现在服务不可用。请稍后重试。"
+    }
+  },
+  "logout": {
+    "title": "注销",
+    "closeWindow": "关闭窗口",
+    "message": "您现在已注销。",
+    "footer": "如果您认为是由于系统错误而转至该页，请与管理员联系。",
+    "simple": {
+      "message": "请关闭您的浏览器窗口。这可防止他人在您的浏览器上按“返回”按钮并查看机密信息。"
+    }
+  },
+  "security": {
+    "labels": {
+      "UNCLASSIFIED": "",
+      "UNCLASSIFIED_FOUO": "仅用于公事",
+      "CONFIDENTIAL_FOUO": "机密 - 仅用于公事",
+      "CONFIDENTIAL": "机密",
+      "CONFIDENTIAL_NOFORN": "机密 - 不可向国外透露",
+      "UNCLASSIFIED_NOFORN": "不可向国外透露",
+      "FOUO": "仅用于公事",
+      "NOFORN": "不可向国外透露",
+      "SECRET": "保密",
+      "TOPSECRET": "绝密"
+    },
+    "proceed": "继续"
+  },
+  "common": {
+    "privacyStmt": "隐私声明",
+    "back": "返回",
+    "loader": {
+      "message": "正在加载内容"
+    }
+  },
+  "error": {
+    "title": "哦，不! 出错了...",
+    "detail": "尝试连接服务时出错。",
+    "explanation": "通常这意味着在处理您的请求时发生了意外错误。请检查您的 URL 以确保路径正确。重试您的请求。如果仍然无法正常工作，请与管理员联系。"
+  },
+  "invalidToken": {
+    "title": "令牌无效。",
+    "detail": "请求令牌无效。它可能已被使用或已过期。",
+    "explanation": "通常这意味着您的请求令牌出现了问题。请返回您原来的站点或应用程序，然后重试。如果仍然无法正常工作，请与管理员联系。"
+  },
+  "invalidTenant": {
+    "title": "租户无效。",
+    "detail": "指定租户不存在或不可用。",
+    "explanation": "通常这意味着在您登录时发生了意外错误。请检查您输入的凭据以及您要访问的组织是否正确。重试您的请求。如果仍然无法正常工作，请与管理员联系。"
+  },
+  "serviceUnavailable": {
+    "title": "服务不可用。",
+    "detail": "连接服务时出错。请稍后重试。",
+    "explanation": "通常这意味着在处理您的请求时服务关闭以进行维护或发生了意外错误。请检查您的 URL 以确保路径正确。重试您的请求。如果仍然无法正常工作，请与管理员联系。"
+  },
+  "invalidCredentials": {
+    "title": "凭据无效。",
+    "detail": "您的凭据有问题。",
+    "explanation": "通常这意味着在您登录时发生了意外错误。请检查您输入的凭据是否正确。重试您的请求。如果仍然无法正常工作，请与管理员联系。"
+  },
+  "404": {
+    "title": "抱歉! 您的跳转方向可能不正确...",
+    "detail": "抱歉。您查找的页面不可用。",
+    "explanation": "通常这意味着我们找不到您要查找的页面。请检查您的 URL 以确保路径正确。重试您的请求。如果仍然无法正常工作，请与管理员联系。"
+  }
+}

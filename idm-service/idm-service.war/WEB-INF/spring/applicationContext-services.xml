@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- START Domain Service classes -->
+    <bean id="keystoneConfigurationService" class="com.hp.ccue.identity.service.KeystoneConfigurationServiceImpl">
+        <property name="queryService" ref="persistenceService"/>
+        <property name="baseService" ref="baseService"/>
+    </bean>
+    <bean id="ldapConfigurationService" class="com.hp.ccue.identity.service.LdapConfigurationServiceImpl">
+        <property name="queryService" ref="persistenceService"/>
+    </bean>
+    <bean id="baseService" class="com.hp.ccue.identity.service.BaseServiceImpl">
+        <property name="queryService" ref="persistenceService"/>
+    </bean>
+    <bean id="metadataService" class="com.hp.ccue.identity.service.MetadataServiceImpl">
+        <property name="queryService" ref="persistenceService"/>
+        <property name="defaultMetadata">
+            <list>
+                <ref bean="defaultMetaPortalTitle"/>
+                <ref bean="defaultMetaPortalWelcomeMsg"/>
+                <ref bean="defaultMetaPortalFooterMsg"/>
+                <ref bean="defaultMetaPortalShowLegalNotice"/>
+                <ref bean="defaultMetaPortalLegalNoticeUrl"/>
+                <ref bean="defaultMetaDisclaimerText"/>
+                <ref bean="defaultMetaSecurityLevel"/>
+                <ref bean="defaultMetaThemeName"/>
+                <ref bean="defaultMetaPortalShowTermsOfUse"/>
+                <ref bean="defaultMetaPortalTermsOfUseUrl"/>
+                <ref bean="defaultMetaPortalShowConfirmDialog"/>
+                <ref bean="defaultMetaFeaturedCategory"/>
+                <ref bean="defaultMetaPortalEnforceEndDate"/>
+                <ref bean="defaultMetaPortalEndDatePeriod"/>
+                <ref bean="defaultMetaRequestOnBehalf"/>
+                <ref bean="defaultWidgetClock"/>
+                <!--<ref bean="defaultWidgetRecentSubscriptions"/>-->
+                <ref bean="defaultWidgetPropelLink"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="organizationService" class="com.hp.ccue.identity.service.OrganizationServiceImpl">
+        <property name="queryService" ref="persistenceService"/>
+        <property name="ldapConfigurationService" ref="ldapConfigurationService"/>
+        <property name="metadataService" ref="metadataService"/>
+        <property name="roleService" ref="roleService"/>
+        <property name="groupService" ref="groupService"/>
+        <property name="abstractGroupService" ref="abstractGroupService"/>
+        <property name="userService" ref="userService"/>
+    </bean>
+    <bean id="samlConfigService" class="com.hp.ccue.identity.service.SamlConfigServiceImpl">
+        <property name="queryService" ref="persistenceService"/>
+    </bean>
+    <bean id="userService" class="com.hp.ccue.identity.service.UserServiceImpl">
+        <property name="queryService" ref="persistenceService"/>
+        <property name="organizationService" ref="organizationService"/>
+        <property name="groupService" ref="abstractGroupService" />
+        <property name="groupRepresentationService" ref="abstractGroupRepresentationService" />
+        <property name="roleService" ref="roleService" />
+    </bean>
+    <bean id="userRepresentationService" class="com.hp.ccue.identity.service.AbstractUserRepresentationServiceImpl">
+        <property name="queryService" ref="persistenceService"/>
+        <property name="userService" ref="userService"/>
+        <property name="representationBuilder" ref="userRepBuilder" />
+    </bean>
+    <bean id="abstractGroupRepresentationService" class="com.hp.ccue.identity.service.AbstractGroupRepresentationServiceImpl">
+        <property name="queryService" ref="persistenceService"/>
+        <property name="abstractGroupService" ref="abstractGroupService"/>
+        <property name="groupRepresentationBuilder" ref="groupBuilder" />
+        <property name="userService" ref="userService"/>
+    </bean>
+
+    <bean id="roleService" class="com.hp.ccue.identity.service.RoleServiceImpl">
+        <property name="queryService" ref="persistenceService"/>
+    </bean>
+    <bean id="tokenDatabaseService" class="com.hp.ccue.identity.service.TokenDatabaseServiceImpl">
+        <property name="queryService" ref="persistenceService"/>
+    </bean>
+    <bean id="groupService" class="com.hp.ccue.identity.service.GroupServiceImpl">
+        <property name="queryService" ref="persistenceService"/>
+    </bean>
+    <bean id="abstractGroupService" class="com.hp.ccue.identity.service.AbstractGroupServiceImpl">
+        <property name="queryService" ref="persistenceService"/>
+        <property name="organizationService" ref="organizationService"/>
+        <property name="userService" ref="userService" />
+        <property name="groupRepresentationService" ref="abstractGroupRepresentationService"/>
+        <property name="roleService" ref="roleService"/>
+        <property name="defaultGroupDefinition" value="propel_users_group_id;propel-users;Propel Users" />
+    </bean>
+    <bean id="organizationAccessRules" class="com.hp.ccue.identity.web.api.OrganizationAccessRules">
+        <property name="organizationService" ref="organizationService"/>
+    </bean>
+    <!-- END Domain Service classes -->
+
+    <bean id="defaultMetaPortalTitle" class="com.hp.ccue.identity.domain.organization.Metadata">
+        <constructor-arg value="portalTitle"/>
+        <constructor-arg value="Default Portal Title"/>
+        <constructor-arg type="boolean" value="true"/>
+    </bean>
+    <bean id="defaultMetaPortalWelcomeMsg" class="com.hp.ccue.identity.domain.organization.Metadata">
+        <constructor-arg value="portalWelcomeMsg"/>
+        <constructor-arg value="Default Portal Welcome Message"/>
+        <constructor-arg type="boolean" value="true"/>
+    </bean>
+    <bean id="defaultMetaPortalFooterMsg" class="com.hp.ccue.identity.domain.organization.Metadata">
+        <constructor-arg value="portalFooterMsg"/>
+        <constructor-arg value="Default Portal Footer Message"/>
+        <constructor-arg type="boolean" value="true"/>
+    </bean>
+    <bean id="defaultMetaPortalShowLegalNotice" class="com.hp.ccue.identity.domain.organization.Metadata">
+        <constructor-arg value="portalShowLegalNotice"/>
+        <constructor-arg value="false"/>
+        <constructor-arg type="boolean" value="true"/>
+    </bean>
+    <bean id="defaultMetaPortalLegalNoticeUrl" class="com.hp.ccue.identity.domain.organization.Metadata">
+        <constructor-arg value="portalLegalNoticeUrl"/>
+        <constructor-arg value=""/>
+        <constructor-arg type="boolean" value="true"/>
+    </bean>
+    <bean id="defaultMetaDisclaimerText" class="com.hp.ccue.identity.domain.organization.Metadata">
+        <constructor-arg value="disclaimerText"/>
+        <constructor-arg value=""/>
+        <constructor-arg type="boolean" value="true"/>
+    </bean>
+    <bean id="defaultMetaSecurityLevel" class="com.hp.ccue.identity.domain.organization.Metadata">
+        <constructor-arg value="securityLevel"/>
+        <constructor-arg value=""/>
+        <constructor-arg type="boolean" value="true"/>
+    </bean>
+    <bean id="defaultMetaThemeName" class="com.hp.ccue.identity.domain.organization.Metadata">
+        <constructor-arg value="themeName"/>
+        <constructor-arg value=""/>
+        <constructor-arg type="boolean" value="true"/>
+    </bean>
+    <bean id="defaultMetaPortalShowTermsOfUse" class="com.hp.ccue.identity.domain.organization.Metadata">
+        <constructor-arg value="portalShowTermsOfUse"/>
+        <constructor-arg value="false"/>
+        <constructor-arg type="boolean" value="false"/>
+    </bean>
+    <bean id="defaultMetaPortalTermsOfUseUrl" class="com.hp.ccue.identity.domain.organization.Metadata">
+        <constructor-arg value="portalTermsOfUseUrl"/>
+        <constructor-arg value=""/>
+        <constructor-arg type="boolean" value="false"/>
+    </bean>
+    <bean id="defaultMetaPortalShowConfirmDialog" class="com.hp.ccue.identity.domain.organization.Metadata">
+        <constructor-arg value="portalShowConfirmDialog"/>
+        <constructor-arg value="false"/>
+        <constructor-arg type="boolean" value="false"/>
+    </bean>
+    <bean id="defaultMetaFeaturedCategory" class="com.hp.ccue.identity.domain.organization.Metadata">
+        <constructor-arg value="featuredCategory"/>
+        <constructor-arg value=""/>
+        <constructor-arg type="boolean" value="false"/>
+    </bean>
+    <bean id="defaultMetaPortalEnforceEndDate" class="com.hp.ccue.identity.domain.organization.Metadata">
+        <constructor-arg value="portalEnforceEndDate"/>
+        <constructor-arg value="false"/>
+        <constructor-arg type="boolean" value="false"/>
+    </bean>
+    <bean id="defaultMetaPortalEndDatePeriod" class="com.hp.ccue.identity.domain.organization.Metadata">
+        <constructor-arg value="portalEndDatePeriod"/>
+        <constructor-arg value="12"/>
+        <constructor-arg type="boolean" value="false"/>
+    </bean>
+    <bean id="defaultMetaRequestOnBehalf" class="com.hp.ccue.identity.domain.organization.Metadata">
+        <constructor-arg value="requestOnBehalf"/>
+        <constructor-arg value="true"/>
+        <constructor-arg type="boolean" value="false"/>
+    </bean>
+
+    <bean id="clockWidgetResource" class="org.springframework.core.io.ClassPathResource">
+        <constructor-arg value="defaultWidgets\ClockWidget.json"/>
+    </bean>
+    <bean id="defaultWidgetClock" class="com.hp.ccue.identity.domain.organization.Metadata">
+        <constructor-arg value="widget:Clock"/>
+        <constructor-arg>
+            <bean class="org.springframework.util.FileCopyUtils" factory-method="copyToString">
+                <constructor-arg>
+                    <bean class="java.io.FileReader">
+                        <constructor-arg>
+                            <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+                                <property name="targetObject" ref="clockWidgetResource" />
+                                <property name="targetMethod" value="getFile" />
+                            </bean>
+                        </constructor-arg>
+                    </bean>
+                </constructor-arg>
+            </bean>
+        </constructor-arg>
+        <constructor-arg type="boolean" value="false"/>
+    </bean>
+
+    <bean id="propelWidgetResource" class="org.springframework.core.io.ClassPathResource">
+        <constructor-arg value="defaultWidgets\PropelLinkWidget.json"/>
+    </bean>
+    <bean id="defaultWidgetPropelLink" class="com.hp.ccue.identity.domain.organization.Metadata">
+        <constructor-arg value="widget:PropelLink"/>
+        <constructor-arg>
+            <bean class="org.springframework.util.FileCopyUtils" factory-method="copyToString">
+                <constructor-arg>
+                    <bean class="java.io.FileReader">
+                        <constructor-arg>
+                            <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+                                <property name="targetObject" ref="propelWidgetResource" />
+                                <property name="targetMethod" value="getFile" />
+                            </bean>
+                        </constructor-arg>
+                    </bean>
+                </constructor-arg>
+            </bean>
+        </constructor-arg>
+        <constructor-arg type="boolean" value="false"/>
+    </bean>
+
+    <bean id="recentWidgetResource" class="org.springframework.core.io.ClassPathResource">
+        <constructor-arg value="defaultWidgets\RecentSubscriptionsWidget.json"/>
+    </bean>
+    <bean id="defaultWidgetRecentSubscriptions" class="com.hp.ccue.identity.domain.organization.Metadata">
+        <constructor-arg value="widget:RecentSubscriptions"/>
+        <constructor-arg>
+            <bean class="org.springframework.util.FileCopyUtils" factory-method="copyToString">
+                <constructor-arg>
+                    <bean class="java.io.FileReader">
+                        <constructor-arg>
+                            <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+                                <property name="targetObject" ref="recentWidgetResource" />
+                                <property name="targetMethod" value="getFile" />
+                            </bean>
+                        </constructor-arg>
+                    </bean>
+                </constructor-arg>
+            </bean>
+        </constructor-arg>
+        <constructor-arg type="boolean" value="false"/>
+    </bean>
+
+</beans>

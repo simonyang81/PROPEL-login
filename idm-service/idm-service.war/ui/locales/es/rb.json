@@ -1,0 +1,75 @@
+{
+  "rtl": "false",
+  "login": {
+    "title": "Iniciar sesión",
+    "username": "Nombre de usuario",
+    "password": "Contraseña",
+    "login": "Iniciar sesión",
+    "error": {
+      "invalid_credentials": "Nombre de usuario o contraseña no válidos",
+      "invalid_token": "El símbolo (token) solicitado no es válido. Puede que ya haya sido usado o que haya caducado. Regrese al sitio o la aplicación que le envió aquí y vuelva a intentarlo.",
+      "service_unavailable": "El servicio no está disponible en este momento. Vuelva a intentarlo más tarde."
+    }
+  },
+  "logout": {
+    "title": "Cerrar sesión",
+    "closeWindow": "Cerrar ventana",
+    "message": "Sesión cerrada.",
+    "footer": "Si cree que ha llegado a esta página por error, póngase en contacto con su administrador.",
+    "simple": {
+      "message": "Por favor, cierre la ventana del explorador. De esta forma, evitará que alguien pulse el botón ''Atrás'' en el explorador y vea información confidencial."
+    }
+  },
+  "security": {
+    "labels": {
+      "UNCLASSIFIED": "",
+      "UNCLASSIFIED_FOUO": "FOUO (solo para uso oficial)",
+      "CONFIDENTIAL_FOUO": "CONFIDENCIAL-FOUO",
+      "CONFIDENTIAL": "CONFIDENCIAL",
+      "CONFIDENTIAL_NOFORN": "CONFIDENCIAL-NOFORN",
+      "UNCLASSIFIED_NOFORN": "NOFORN (acceso restringido a ciudadanos extranjeros)",
+      "FOUO": "FOUO (solo para uso oficial)",
+      "NOFORN": "NOFORN (acceso restringido a ciudadanos extranjeros)",
+      "SECRET": "SECRETO",
+      "TOPSECRET": "TOP SECRET"
+    },
+    "proceed": "Continuar"
+  },
+  "common": {
+    "privacyStmt": "Declaración de privacidad",
+    "back": "Atrás",
+    "loader": {
+      "message": "Cargando contenido"
+    }
+  },
+  "error": {
+    "title": "¡Vaya! Algo ha salido mal...",
+    "detail": "Se ha producido un error al intentar conectar con el servicio.",
+    "explanation": "Generalmente eso significa que se ha producido un error imprevisto al procesar su solicitud. Compruebe que su dirección URL tenga la ruta correcta. Vuelva a hacer la solicitud. Si eso no funciona, póngase en contacto con su administrador."
+  },
+  "invalidToken": {
+    "title": "Token no válido.",
+    "detail": "El símbolo (token) solicitado no es válido. Puede que ya haya sido usado o que haya caducado.",
+    "explanation": "Generalmente eso significa que ha habido un problema con el token de la solicitud. Regrese al sitio o la aplicación que le envió aquí y vuelva a intentarlo. Si eso no funciona, póngase en contacto con su administrador."
+  },
+  "invalidTenant": {
+    "title": "Inquilino no válido.",
+    "detail": "El inquilino especificado no existe o no está disponible.",
+    "explanation": "Generalmente eso significa que se ha producido un error imprevisto al iniciar sesión. Compruebe si está introduciendo las credenciales correctamente y si la organización a la que intenta acceder es la correcta. Vuelva a hacer la solicitud. Si eso no funciona, póngase en contacto con su administrador."
+  },
+  "serviceUnavailable": {
+    "title": "Servicio no disponible.",
+    "detail": "Se ha producido un error al conectarse con el servicio. Vuelva a intentarlo más tarde.",
+    "explanation": "Generalmente eso significa que el servicio está desactivado por razones de mantenimiento o que se ha producido un error imprevisto al procesar su solicitud. Compruebe que su dirección URL tenga la ruta correcta. Vuelva a hacer la solicitud. Si eso no funciona, póngase en contacto con su administrador."
+  },
+  "invalidCredentials": {
+    "title": "Credenciales incorrectas.",
+    "detail": "Ha habido un problema con sus credenciales.",
+    "explanation": "Generalmente eso significa que se ha producido un error imprevisto al iniciar sesión. Compruebe si está introduciendo las credenciales correctamente. Vuelva a hacer la solicitud. Si eso no funciona, póngase en contacto con su administrador."
+  },
+  "404": {
+    "title": "¡Vaya! Parece que va por mal camino...",
+    "detail": "Lo sentimos. La página que busca no está disponible.",
+    "explanation": "Generalmente eso significa que no se ha podido encontrar la página que buscaba. Compruebe que su dirección URL tenga la ruta correcta. Vuelva a hacer la solicitud. Si eso no funciona, póngase en contacto con su administrador."
+  }
+}

@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <context:annotation-config/>
+
+    <!-- Spring Datasource -->
+
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${idm.persistence.connection.driver.class}" />
+        <property name="url" value="${idm.persistence.connection.url}" />
+        <property name="username" value="${idm.persistence.connection.username}" />
+        <property name="password" value="${idm.persistence.connection.password}" />
+    </bean>
+
+    <!-- Flyway DB handles database schema on application startup -->
+    <bean id="flyway" class="com.googlecode.flyway.core.Flyway" init-method="migrate" depends-on="dataSource">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="locations">
+            <array>
+                <value>${idm.persistence.flyway.type:postgresql}/db/migration</value>
+                <value>${idm.persistence.flyway.type:postgresql}/db/migration</value>
+            </array>
+        </property>
+    </bean>
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="packagesToScan" value="com.hp.ccue.identity.domain" />
+        <property name="hibernateProperties" >
+            <props>
+                <prop key="hibernate.jdbc.batch_size">${idm.persistence.jdbc.batch_size}</prop>
+                <prop key="hibernate.dialect">${idm.persistence.dialect}</prop>
+                <prop key="hibernate.cache.provider_class">${idm.persistence.cache.provider_class}</prop>
+                <prop key="hibernate.show_sql">${idm.persistence.show_sql}</prop>
+                <prop key="hibernate.hbm2ddl.auto">${idm.persistence.hbm2ddl.auto}</prop>
+                <prop key="hibernate.connection.pool_size">${idm.persistence.connection.pool_size}</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!--
+    Objects that require access to the persistent data store will need a SessionFactory object
+    for getting the PersistenceService
+    -->
+    <bean id="persistenceService" class="com.hp.ccue.identity.domain.persistence.PersistenceService">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <!--
+    Enable mapping of objects to and from JSON, setting default response format to JSON.
+    -->
+    <bean id="contentNegotiationManager"
+          class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+        <!--
+                <property name="favorPathExtension" value="true" />
+                <property name="favorParameter" value="false" />
+        -->
+        <property name="defaultContentType" value="application/json"/>
+    </bean>
+
+    <bean id="jacksonHibernateObjectMapper" class="com.hp.ccue.identity.domain.persistence.HibernateAwareObjectMapper" />
+
+    <mvc:annotation-driven content-negotiation-manager="contentNegotiationManager">
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <property name="objectMapper" ref="jacksonHibernateObjectMapper"/>
+            </bean>
+            <bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>image/jpeg</value>
+                        <value>image/png</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+    <!-- START Standard Mode configuration-->
+    <bean id="simpleEncryptionConfiguration" class="com.hp.ccue.identity.config.IDMSimplePBEConfig"
+        init-method="init">
+    </bean>
+    <bean id="configurationEncryptor" class="org.jasypt.encryption.pbe.StandardPBEStringEncryptor">
+        <property name="config" ref="simpleEncryptionConfiguration" />
+    </bean>
+    <bean id="propertyConfigurerBase"
+          class="org.jasypt.spring3.properties.EncryptablePropertyPlaceholderConfigurer">
+            <constructor-arg ref="configurationEncryptor" />
+        <property name="locations">
+            <list>
+                <value>/WEB-INF/spring/applicationContext.properties</value>
+                <value>file:${idm.properties}</value>
+            </list>
+        </property>
+        <property name="ignoreResourceNotFound" value="true" />
+    </bean>
+    <!-- END Standard Mode configuration-->
+
+    <!-- START FIPS Mode configuration -->
+    <!--
+    <bean id="configurationEncryptor" class="com.hp.ccue.crypto.util.SecurityHelper" />
+
+    <bean id="propertyConfigurer"
+           class="com.hp.ccue.identity.config.EncryptablePropertyPlaceholderConfigurer">
+           <constructor-arg ref="configurationEncryptor" />
+           <property name="locations">
+               <list>
+                   <value>/WEB-INF/spring/applicationContext.properties</value>
+               </list>
+             </property>
+    </bean>
+     -->
+    <!-- END FIPS Mode configuration -->
+
+    <!--
+    Configure Active Directory authentication
+    -->
+    <bean id="csaAuthConfig" class="com.hp.ccue.identity.ldap.ConvergedLdapAuthConfig">
+        <property name="providerProtocol" value="${idm.csa.protocol}"/>
+        <property name="providerHostname" value="${idm.csa.hostname}"/>
+        <property name="providerPort" value="${idm.csa.port}"/>
+        <property name="securityTransportUsername" value="${idm.csa.username}"/>
+        <property name="securityTransportPassword" value="${idm.csa.password}"/>
+        <property name="providerRestApiPath" value="${idm.csa.base}/rest"/>
+    </bean>
+
+    <!-- Set up the user factory for building a user representation from a token -->
+    <bean id="userFactory" class="com.hp.ccue.identity.domain.UserFactory">
+        <property name="userService" ref="userService" />
+        <property name="userRepresentationService" ref="userRepresentationService" />
+        <property name="groupService" ref="abstractGroupService" />
+        <property name="groupRepresentationService" ref="abstractGroupRepresentationService" />
+        <property name="roleService" ref="roleService" />
+    </bean>
+    
+    <bean class="com.hp.ccue.identity.domain.AbstractUserFactory" id="abstractUserFactory">
+        <property name="userService" ref="userService"/>
+    </bean>
+
+    <bean id="authenticationResponseFactory" class="com.hp.ccue.identity.domain.AuthenticationResponseFactory">
+        <property name="userFactory" ref="userFactory" />
+    </bean>
+
+    <!-- Tenant factory for creating Tenant objects from Organization objects and references -->
+    <bean id="tenantFactory" class="com.hp.ccue.identity.domain.TenantFactory">
+        <property name="orgService" ref="organizationService" />
+    </bean>
+
+    <!-- Set up the token templateFactory to generate plaintext JWT tokens that expire in half an hour -->
+    <bean id="tokenFactory" class="com.hp.ccue.identity.domain.JwtTokenFactory">
+        <property name="lifetimeMinutes" value="30"/>
+        <property name="defaultTokenTypeName" value="SIGNED"/>
+        <property name="signingKey" value="${idm.encryptedSigningKey}"/>
+        <property name="userFactory" ref="userFactory" />
+        <property name="userService" ref="userService" />
+    </bean>
+
+    <!-- Objects that invoke REST APIs outside of the identity service, such as the Keystone authentication
+         provider, need a factory object for the Spring RestTemplate -->
+    <bean id="csaTemplateFactory" class="com.hp.ccue.identity.rest.RestTemplateFactoryImpl">
+        <!-- START FIPS Mode Configuration -->
+        <!--
+        <property name="fipsEnabled" value="true" />
+        -->
+        <!-- END FIPS Mode Configuration -->
+        <property name="wrapEnabled" value="false" />
+        <!-- Flag to require a valid SSL certificate and hostname verification. Set to false to support self-signed
+             certificates or true to perform normal SSL certificate validation -->
+        <property name="requireValidCertificate" value="${idm.ssl.requireValidCertificate}" />
+    </bean>
+
+    <!-- Set up the roles populator for getting roles information from CSA / Consumption -->
+    <bean id="csaRolesPopulator" class="com.hp.ccue.identity.ldap.ConsumptionLdapRolesPopulator">
+        <property name="consumptionConfig" ref="csaAuthConfig" />
+        <property name="groupMembershipAttributes" value="member,uniqueMember" />
+        <property name="templateFactory" ref="csaTemplateFactory" />
+        <property name="defaultRoles" value="ROLE_REST" />
+        <property name="organizationService" ref="organizationService" />
+    </bean>
+
+    <!-- Set up the ActiveDirectory authentication provider to use the CSA configuration and token templateFactory -->
+    <bean id="activeDirectoryAuthProvider"
+          class="com.hp.ccue.identity.ldap.ConvergedActiveDirectoryAuthenticationProvider">
+        <property name="config" ref="csaAuthConfig"/>
+        <property name="tokenFactory" ref="tokenFactory"/>
+        <property name="templateFactory" ref="csaTemplateFactory" />
+        <property name="rolesPopulator" ref="csaRolesPopulator" />
+        <property name="persistenceService" ref="persistenceService" />
+        <property name="userAndRepFactory" ref="ldapUserAndRepFactory" />
+    </bean>
+
+    <!-- Set up the LDAP authentication provider to use the CSA configuration and token templateFactory -->
+    <bean id="ldapAuthProvider" class="com.hp.ccue.identity.ldap.ConvergedLdapAuthenticationProvider">
+        <property name="config" ref="csaAuthConfig"/>
+        <property name="tokenFactory" ref="tokenFactory"/>
+        <property name="templateFactory" ref="csaTemplateFactory" />
+        <property name="rolesPopulator" ref="csaRolesPopulator" />
+        <property name="persistenceService" ref="persistenceService" />
+        <property name="userAndRepFactory" ref="ldapUserAndRepFactory" />
+    </bean>
+
+    <!-- Set up the seeded authentication provider -->
+    <bean id="seededAuthProvider" class="com.hp.ccue.identity.seeded.SeededAuthenticationProvider">
+        <property name="configFile" value="seededorgs.properties"/>
+        <property name="tokenFactory" ref="tokenFactory"/>
+        <property name="tenantFactory" ref="tenantFactory" />
+    </bean>
+
+    <!-- START Keystone Configuration -->
+    <!-- Set up the Keystone service configuration (compatible with IdM 1.0.0) -->
+    <bean id="keystoneConfig" class="com.hp.ccue.identity.keystone.KeystoneConfig">
+        <property name="protocol" value="${idm.keystone.protocol}" />
+        <property name="hostname" value="${idm.keystone.hostname}" />
+        <property name="port" value="${idm.keystone.port}" />
+        <property name="servicePath" value="${idm.keystone.servicePath}" />
+        <property name="domainName" value="${idm.keystone.domainName}" />
+        <property name="transportUsername" value="${idm.keystone.transportUsername}" />
+        <property name="transportPassword" value="${idm.keystone.transportPassword}" />
+        <property name="transportProject" value="${idm.keystone.transportProject}" />
+    </bean>
+
+    <!-- Separate REST template factory for Keystone communications since Keystone wraps JSON with root name of object
+         and expects JSON in incoming request bodies to be similarly wrapped. -->
+    <bean id="keystoneTemplateFactory" class="com.hp.ccue.identity.rest.RestTemplateFactoryImpl">
+        <!-- START FIPS Mode Configuration -->
+        <!--
+        <property name="fipsEnabled" value="true" />
+        -->
+        <!-- END FIPS Mode Configuration -->
+        <!-- Keystone wraps all outgoing JSON objects and expects all incoming JSON objects to be wrapped in their
+             root values, except arrays -->
+        <property name="wrapEnabled" value="true" />
+        <!-- Flag to require a valid SSL certificate and hostname verification. Set to false to support self-signed
+             certificates or true to perform normal SSL certificate validation -->
+        <property name="requireValidCertificate" value="${idm.ssl.requireValidCertificate}" />
+    </bean>
+
+    <!-- The Keystone authentication provider (for IdM 1.0.0 Keystone integration) -->
+    <bean id="keystoneAuthProvider1" class="com.hp.ccue.identity.keystone.KeystoneAuthenticationProvider">
+        <property name="configuration" ref="keystoneConfig"/>
+        <property name="tokenFactory" ref="tokenFactory"/>
+        <property name="templateFactory" ref="keystoneTemplateFactory"/>
+    </bean>
+    <bean id="tokenDatabaseService" class="com.hp.ccue.identity.service.TokenDatabaseServiceImpl">
+        <property name="queryService" ref="persistenceService"/>
+    </bean>
+
+    <bean id="tokenStoreDatabase" class="com.hp.ccue.identity.ha.TokenStoreDatabase">
+        <property name="tokenFactory" ref="tokenFactory"/>
+        <property name="tokenDatabaseService" ref="tokenDatabaseService"/>
+    </bean>
+
+    <!-- The Keystone authentication provider (for IdM 1.1.0 Keystone integration) -->
+    <!-- START New Keystone Integration -->
+    <!--
+    <bean id="keystoneAuthProvider" class="com.hp.ccue.identity.keystone.KeystoneSecondaryAuthenticationProvider">
+        <property name="tokenFactory" ref="tokenFactory" />
+        <property name="templateFactory" ref="keystoneTemplateFactory" />
+        <property name="keystoneConfigurationService" ref="keystoneConfigurationService"/>
+    </bean>
+    -->
+    <!-- END New Keystone Integration -->
+    <!-- END Keystone Configuration -->
+
+    <!-- START Forwarding Configuration -->
+    <!--
+    <bean id="idmConfig" class="com.hp.ccue.identity.rp.IdentityServiceConfig">
+        <property name="protocol" value="https"/>
+        <property name="hostname" value="localhost"/>
+        <property name="port" value="8444"/>
+        <property name="servicePath" value="idm-service"/>
+        <property name="integrationAcctUserName" value="idmTransportUser"/>
+        <property name="integrationAcctPassword" value="idmTransportUser"/>
+        <property name="defaultTenant" value="CSA_CONSUMER"/>
+        <property name="proxyProtocol" value=""/>
+        <property name="proxyHost" value=""/>
+        <property name="proxyPort" value=""/>
+        <property name="xAuthToken" value=""/>
+    </bean>
+
+    <bean id="connectionService" class="com.hp.ccue.identity.rp.RPHttpConnectionImpl"/>
+
+    <bean id="tokenValidator" class="com.hp.ccue.identity.domain.JwtTokenValidator">
+        <property name="tokenFactory" ref="tokenFactory"/>
+    </bean>
+
+    <bean id="idmAuthProvider" class="com.hp.ccue.identity.rp.IdentityAuthenticationProvider">
+        <property name="configuration" ref="idmConfig"/>
+        <property name="tokenFactory" ref="tokenFactory"/>
+        <property name="connectionService" ref="connectionService"/>
+        <property name="tokenValidator" ref="tokenValidator"/>
+    </bean>
+    -->
+    <!-- END Forwarding Configuration -->
+
+    <!-- Set up the main authentication provider to use ActiveDirectory and LDAP -->
+    <bean id="multiTenantAuthProvider" class="com.hp.ccue.identity.authn.MultiTenantAuthenticationProvider">
+        <property name="providers">
+            <list>
+                <!-- START Forwarding Configuration -->
+                <!--
+                <ref bean="idmAuthProvider" />
+                -->
+                <!-- END Forwarding Configuration -->
+
+                <!-- In forwarding configuration, remove these 3 authentication providers -->
+                <ref bean="activeDirectoryAuthProvider"/>
+                <ref bean="ldapAuthProvider"/>
+                <ref bean="seededAuthProvider"/>
+            </list>
+        </property>
+        <!-- START Secondary authentication path configuration -->
+        <!-- Flag that indicates whether secondary authentication has been enabled. -->
+        <property name="secondaryEnabled" value="${idm.keystone.enabled}"/>
+        <!-- Bean reference to the secondary authentication provider. Currently, only a KeystoneAuthenticationProvider
+             can be configured to function as a secondary authentication provider. -->
+        <property name="secondaryProvider" ref="keystoneAuthProvider1"/>
+        <!-- START New Keystone Integration -->
+        <!--
+        <property name="secondaryProvider" ref="keystoneAuthProvider" />
+        -->
+        <!-- END New Keystone Integration -->
+        <!-- Flag that indicates whether secondary authentication is required for the entire authentication operation
+             to succeed. If this property is set to false, then the authentication is considered successful if any
+             primary authentication provider succeeds; the secondary authentication result is treated as supplemental
+             information. If this property is set to true, then both primary and secondary authentication must
+             succeed in order for the authentication operation to be considered successful. If not provided,
+             defaults to false. -->
+        <property name="secondaryRequired" value="${idm.keystone.required}"/>
+        <!-- END Secondary authentication path configuration -->
+    </bean>
+
+    <!--
+    Configure the identity service
+    -->
+    <bean id="identityService" class="com.hp.ccue.identity.service.IdentityServiceImpl">
+        <property name="provider" ref="multiTenantAuthProvider"/>
+        <property name="tokenFactory" ref="tokenFactory"/>
+        <property name="tenantFactory" ref="tenantFactory" />
+        <property name="auditAppender" ref="auditAppender"/>
+        <property name="organizationService" ref="organizationService"/>
+        <property name="userService" ref="userService" />
+        <property name="queryService" ref="persistenceService" />
+        <property name="authenticationResponseFactory" ref="authenticationResponseFactory" />
+    </bean>
+
+    <!--
+    Configure the identity controller
+    -->
+    <bean id="identityController" class="com.hp.ccue.identity.web.api.IdentityController"
+          init-method="init" destroy-method="cleanup">
+        <property name="identityService" ref="identityService"/>
+    </bean>
+
+    <bean id="sessionStateService" class="com.hp.ccue.identity.service.SessionStateService"/>
+
+    <!--Request Token Service-->
+    <bean id="tokenService" class="com.hp.ccue.identity.service.TokenServiceImpl">
+        <property name="tokenStore" ref="tokenStore"/>
+        <property name="tokenFactory" ref="tokenFactory"/>
+        <property name="lifetimeMinutes" value="5"/>
+        <property name="sessionStateService" ref="sessionStateService"/>
+        <property name="authenticationResponseFactory" ref="authenticationResponseFactory" />
+    </bean>
+
+    <bean id="imageProxyService" class="com.hp.ccue.identity.service.ImageProxyServiceImpl">
+        <property name="csaAuthConfig" ref="csaAuthConfig"/>
+        <property name="restTemplateFactory" ref="csaTemplateFactory"/>
+        <property name="imageApiPath" value="${idm.csa.base}/images/library"/>
+    </bean>
+
+    <!-- Enable the queryService to use the login page with persisted organizations -->
+    <bean id="tenantService" class="com.hp.ccue.identity.service.TenantServiceImpl">
+        <property name="csaAuthConfig" ref="csaAuthConfig"/>
+        <property name="templateFactory" ref="csaTemplateFactory"/>
+        <property name="organizationApiPath" value="${idm.csa.base}/api/mpp/mpp-organization"/>
+        <property name="imageProxyService" ref="imageProxyService"/>
+        <property name="persistenceService" ref="persistenceService"/>
+    </bean>
+
+    <bean id="versionInfoService" class="com.hp.ccue.identity.service.VersionInfoServiceImpl">
+        <property name="servletContext" ref="servletContext"/>
+    </bean>
+
+    <!-- START SiteMinder SSO Configuration -->
+    <!--
+    <bean id="ssoAuthenticationProvider" class="org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationProvider">
+        <property name="preAuthenticatedUserDetailsService">
+            <bean id="userDetailsServiceWrapper" class="org.springframework.security.core.userdetails.UserDetailsByNameServiceWrapper">
+                <property name="userDetailsService" ref="ssoPreAuthenticatedUserDetailsService" />
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="ssoPreAuthenticatedUserDetailsService" class="com.hp.ccue.identity.filter.sso.SSOUserDetailsServiceImpl">
+        <property name="restRole" value="ROLE_REST" />
+    </bean>
+    -->
+    <!-- END SiteMinder SSO Configuration -->
+
+    <!-- START Certificate Authentication Configuration -->
+    <bean id="cacLdapAuthProvider"
+          class="com.hp.ccue.identity.filter.certificate.CertificateLdapAuthenticationProvider">
+        <property name="config" ref="csaAuthConfig"/>
+        <property name="templateFactory" ref="csaTemplateFactory"/>
+        <property name="persistenceService" ref="persistenceService"/>
+    </bean>
+
+    <bean id="cacUserDetailsService" class="com.hp.ccue.identity.filter.certificate.CertificateUserDetailsServiceImpl">
+        <property name="restRole" value="ROLE_ADMIN"/>
+    </bean>
+    <!-- END Certificate Authentication Configuration -->
+
+    <!--  Start Auditing Beans configuration -->
+    <!--
+    idm.csa.audit.enabled       Flag to enable or disable Auditing. Default is true
+    idm.csa.audit.retries       Retry attempts. If calling the Audit service fails with a non-runtime exception, it will be retried this many times.
+                                The retry interval follows a Geometric Progression with a scale factor of 1 and common ratio of 2.
+                                Be aware of this when trying to set higher retry values. Default retries is 6
+    idm.csa.audit.protocol      Audit Service HTTP protocol. Default is 'https'
+    idm.csa.audit.hostname      Audit Service Host. Default is 'localhost'
+    idm.csa.audit.port          Audit Service Port. Default port is 8444
+    idm.csa.audit.servicePath   Service path to the Audit REST endpoint. default is '/csa/rest/audit/'
+    idm.csa.audit.username      Basic Authentication use. Default is 'csaTransportUser'
+    idm.csa.audit.password      The Base64 encoded Basic Authentication password. Default is ENV('csaTransportUser')
+    -->
+    <bean id="auditAppender" class="com.hp.ccue.identity.audit.CSAAuditor">
+        <property name="enabled" value="${idm.csa.audit.enabled}"/>
+        <property name="retries" value="${idm.csa.audit.retries}"/>
+        <property name="templateFactory" ref="csaTemplateFactory"/>
+        <property name="protocol" value="${idm.csa.audit.protocol}"/>
+        <property name="host" value="${idm.csa.audit.hostname}"/>
+        <property name="port" value="${idm.csa.audit.port}"/>
+        <property name="servicePath" value="${idm.csa.audit.servicePath}"/>
+        <property name="transportUsername" value="${idm.csa.audit.username}"/>
+        <property name="transportPassword" value="${idm.csa.audit.password}"/>
+    </bean>
+    <!--  End Auditing Beans configuration -->
+
+    <!-- Metrics -->
+    <bean id="healthCheckRegistry" class="com.codahale.metrics.health.HealthCheckRegistry"/>
+    <bean id="metricsRegistry" class="com.codahale.metrics.MetricRegistry"/>
+
+    <bean id="database" class="com.hp.ccue.identity.metrics.healthCheck.DBHealthCheck">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <bean id="deadlocks" class="com.codahale.metrics.health.jvm.ThreadDeadlockHealthCheck"/>
+    <!-- End Metrics -->
+</beans>

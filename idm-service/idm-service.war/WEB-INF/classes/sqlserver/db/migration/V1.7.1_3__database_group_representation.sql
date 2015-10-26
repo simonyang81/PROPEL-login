@@ -1,0 +1,2 @@
+ALTER TABLE USER_GROUP_DATABASE_REP DROP CONSTRAINT user_group_database_rep_user_id_key;
+ALTER TABLE USER_GROUP_DATABASE_REP DROP CONSTRAINT user_group_database_rep_representation_id_key;

@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Built-By: jenkins
+Build-Jdk: 1.8.0_45
+Implementation-BuildNumber: 9
+Implementation-GitCommitHash: 2c97b5f
+Implementation-GitDescribe: v1.7.1-rc.1
+Implementation-GitTags: v1.7.1-rc.1
+Implementation-Timestamp: 20150820172847
+Specification-Label: rc.1
+Specification-MajorVersion: 1
+Specification-MinorVersion: 7
+Specification-PatchVersion: 1
+Specification-Title: idm-service
+

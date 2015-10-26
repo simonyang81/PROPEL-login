@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- User Builder -->
+    <bean id="ldapUserProfileBuilder" class="com.hp.ccue.identity.ldap.LdapUserProfileBuilder">
+        <property name="attributeFactory" ref="ldapAttributeFactory"/>
+    </bean>
+
+    <bean id="userRepBuilder" class="com.hp.ccue.identity.domain.model.representation.user.UserRepresentationBuilder">
+        <property name="builders">
+            <map>
+                <entry key="LDAP_REPRESENTATION" value-ref="ldapUserProfileBuilder" />
+            </map>
+        </property>
+    </bean>
+
+    <!-- Group Builder -->
+    <bean id="defaultGroupCalculator" class="com.hp.ccue.identity.domain.model.representation.group.DefaultMembershipCalculator">
+        <property name="userService" ref="userService" />
+    </bean>
+    <bean id="ldapGroupCalculator" class="com.hp.ccue.identity.ldap.LdapGroupMembershipCalculator">
+        <property name="userService" ref="userService" />
+        <property name="userRepresentationService" ref="userRepresentationService" />
+        <property name="ldapConfigurationService" ref="ldapConfigurationService" />
+    </bean>
+    <bean id="dbGroupCalculator" class="com.hp.ccue.identity.service.DatabaseGroupMembershipCalculator">
+        <property name="queryService" ref="persistenceService" />
+    </bean>
+
+    <bean id="groupBuilder" class="com.hp.ccue.identity.domain.model.representation.group.GroupRepresentationBuilder">
+        <property name="calculators">
+            <map>
+                <entry key="DEFAULT_GROUP_REPRESENTATION" value-ref="defaultGroupCalculator" />
+                <entry key="LDAP_GROUP_REPRESENTATION" value-ref="ldapGroupCalculator" />
+                <entry key="DATABASE_GROUP_REPRESENTATION" value-ref="dbGroupCalculator" />
+            </map>
+        </property>
+    </bean>
+    
+    <!-- LDAP Factories -->
+    <bean class="com.hp.ccue.identity.ldap.LdapUserProfileFactory" id="ldapUserProfileFactory">
+        <property name="userService" ref="userService"/>
+    </bean>
+    <bean class="com.hp.ccue.identity.ldap.LdapUserRepresentationFactory" id="ldapUserRepFactory">
+        <property name="userRepresentationService" ref="userRepresentationService" />
+        <property name="userReferenceConverter" ref="ldapReferenceConverter"/>
+        <property name="userService" ref="userService"/>
+    </bean>
+    <bean class="com.hp.ccue.identity.ldap.LdapDirectReportsLookup" id="ldapDirectReportsLookup">
+        <property name="ldapConfigurationService" ref="ldapConfigurationService"/>
+    </bean>
+    <bean class="com.hp.ccue.identity.ldap.LdapAttributeUserReferenceConverter" id="ldapReferenceConverter">
+        <property name="userRepresentationService" ref="userRepresentationService"/>
+    </bean>
+    <bean class="com.hp.ccue.identity.ldap.LdapAttributeFactory" id="ldapAttributeFactory">
+        <property name="ldapConfigurationService" ref="ldapConfigurationService"/>
+        <property name="referenceConverter" ref="ldapReferenceConverter"/>
+    </bean>
+    <bean class="com.hp.ccue.identity.ldap.LdapUserAndRepresentationFactory" id="ldapUserAndRepFactory">
+        <property name="ldapConfigurationService" ref="ldapConfigurationService"/>
+        <property name="organizationService" ref="organizationService"/>
+        <property name="profileFactory" ref="ldapUserProfileFactory"/>
+        <property name="representationFactory" ref="ldapUserRepFactory"/>
+        <property name="userFactory" ref="abstractUserFactory"/>
+        <property name="directReportsLookup" ref="ldapDirectReportsLookup"/>
+        <property name="attributeFactory" ref="ldapAttributeFactory"/>
+    </bean>
+
+    <!-- SiteMinder Factories -->
+    <bean id="siteMinderUserAndRepFactory" class="com.hp.ccue.identity.domain.UserAndRepresentationFactory">
+        <property name="orgService" ref="organizationService" />
+        <property name="userFactory" ref="abstractUserFactory" />
+        <property name="userFinder" ref="siteMinderUserFinder" />
+        <property name="userService" ref="userService" />
+        <property name="userRepresentationFactory" ref="siteMinderUserRepFactory" />
+    </bean>
+
+    <bean id="siteMinderUserFinder" class="com.hp.ccue.identity.smsso.SiteMinderUserFinder">
+        <property name="userRepresentationService" ref="userRepresentationService" />
+    </bean>
+
+    <bean id="siteMinderUserRepFactory" class="com.hp.ccue.identity.smsso.SiteMinderUserRepresentationFactory">
+        <property name="userRepresentationService" ref="userRepresentationService" />
+    </bean>
+</beans>

@@ -1,0 +1,19 @@
+{
+  "name": "mpp-theme",
+  "ignore": [
+    ".gitignore",
+    "package.json",
+    "Gruntfile.js",
+    "index.html"
+  ],
+  "version": "0.0.6",
+  "_release": "0.0.6",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.0.6",
+    "commit": "9a5c9ed96ba5a4446f85d57e6a9ecc29ab53d0c6"
+  },
+  "_source": "http://ftct0033g.fc.usa.hp.com:7990/scm/ccom/bower-mpp-theme.git",
+  "_target": "0.0.6",
+  "_originalSource": "git+http://ftct0033g.fc.usa.hp.com:7990/scm/ccom/bower-mpp-theme.git"
+}

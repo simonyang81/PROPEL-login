@@ -1,0 +1,75 @@
+{
+  "rtl": "false",
+  "login": {
+    "title": "Accedi",
+    "username": "Nome utente",
+    "password": "Password",
+    "login": "Accedi",
+    "error": {
+      "invalid_credentials": "Nome utente o password non validi",
+      "invalid_token": "Il token della richiesta non è valido. Potrebbe essere già stato utilizzato o essere scaduto. Tornare al sito o all´applicazione di origine e riprovare.",
+      "service_unavailable": "Il servizio non è disponibile in questo momento. Riprovare più tardi."
+    }
+  },
+  "logout": {
+    "title": "Chiudi sessione",
+    "closeWindow": "Chiudi finestra",
+    "message": "Disconnessione eseguita.",
+    "footer": "Se si pensa di aver raggiunto questa pagina a causa di un errore, contattare l´amministratore.",
+    "simple": {
+      "message": "Chiudere la finestra del browser, per impedire che qualcuno possa utilizzare il pulsante ''Indietro'' del browser e visualizzare informazioni riservate."
+    }
+  },
+  "security": {
+    "labels": {
+      "UNCLASSIFIED": "",
+      "UNCLASSIFIED_FOUO": "FOUO",
+      "CONFIDENTIAL_FOUO": "RISERVATO-FOUO",
+      "CONFIDENTIAL": "RISERVATO",
+      "CONFIDENTIAL_NOFORN": "RISERVATO-NOFORN",
+      "UNCLASSIFIED_NOFORN": "NOFORN",
+      "FOUO": "FOUO",
+      "NOFORN": "NOFORN",
+      "SECRET": "SEGRETO",
+      "TOPSECRET": "TOP SECRET"
+    },
+    "proceed": "Continua"
+  },
+  "common": {
+    "privacyStmt": "Informativa sulla privacy",
+    "back": "Indietro",
+    "loader": {
+      "message": "Caricamento del contenuto in corso"
+    }
+  },
+  "error": {
+    "title": "Si è verificato un errore...",
+    "detail": "Errore nel tentativo di connessione al servizio.",
+    "explanation": "Generalmente questo significa che si è verificato un errore inatteso durante l´elaborazione della richiesta. Controllare l´URL per assicurarsi che il percorso sia corretto. Provare a reinviare la richiesta. In caso di esito negativo, contattare l´amministratore."
+  },
+  "invalidToken": {
+    "title": "Token non valido.",
+    "detail": "Il token della richiesta non è valido. Potrebbe essere già stato utilizzato o essere scaduto.",
+    "explanation": "Generalmente questo significa che si è verificato un problema con il token della richiesta. Tornare al sito o all´applicazione di origine e riprovare. In caso di esito negativo, contattare l´amministratore."
+  },
+  "invalidTenant": {
+    "title": "Titolare non valido.",
+    "detail": "Il titolare specificato è inesistente oppure non disponibile.",
+    "explanation": "Generalmente questo significa che si è verificato un errore inatteso durante l´accesso. Assicurarsi di immettere le credenziali correttamente e di accedere all´organizzazione giusta. Provare a reinviare la richiesta. In caso di esito negativo, contattare l´amministratore."
+  },
+  "serviceUnavailable": {
+    "title": "Servizio non disponibile.",
+    "detail": "Errore nella connessione al servizio. Riprovare più tardi.",
+    "explanation": "Generalmente questo significa che il servizio è inattivo per manutenzione o che si è verificato un errore inatteso durante l´elaborazione della richiesta. Controllare l´URL per assicurarsi che il percorso sia corretto. Provare a reinviare la richiesta. In caso di esito negativo, contattare l´amministratore."
+  },
+  "invalidCredentials": {
+    "title": "Credenziali non valide.",
+    "detail": "Si è verificato un problema con le credenziali.",
+    "explanation": "Generalmente questo significa che si è verificato un errore inatteso durante l´accesso. Assicurarsi di immettere le credenziali correttamente. Provare a reinviare la richiesta. In caso di esito negativo, contattare l´amministratore."
+  },
+  "404": {
+    "title": "Si è verificato un errore...",
+    "detail": "La pagina cercata non è disponibile.",
+    "explanation": "Generalmente questo significa che non è stato possibile trovare la pagina che si stava cercando. Controllare l´URL per assicurarsi che il percorso sia corretto. Provare a reinviare la richiesta. In caso di esito negativo, contattare l´amministratore."
+  }
+}

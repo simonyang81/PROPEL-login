@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
+
+    <!-- Token store configuration for TokenStore Database-->
+    <bean id="tokenStore" class="com.hp.ccue.identity.ha.TokenStoreDatabase">
+        <property name="tokenFactory" ref="tokenFactory"/>
+        <property name="tokenDatabaseService" ref="tokenDatabaseService"/>
+        <property name="tokenService" ref="tokenDatabaseService"/>
+    </bean>
+
+    <!-- Token store configuration for Infinispan-->
+    <!--
+    <bean id="tokenStore" class="com.hp.ccue.identity.ha.InfinispanTokenStore">
+        <property name="lifetimeMinutes" value="5" />-->
+        <!-- START Cluster Configuration -->
+        <!--
+        <property name="clusterEnabled" value="true" />
+        -->
+        <!-- The jgroups.xml file defines the cluster and is probably an external file. The presence of this setting
+             forces clusterEnabled to true. -->
+        <!--
+        <property name="clusterConfigFile" value="jgroups.xml" />
+        -->
+        <!-- The infinispan.xml file allows the use of an XML configuration file to provide more control than the
+             properties allow. Providing this configuration file overrides both the clusterEnabled and clusterConfigFile
+             property settings -->
+        <!--
+        <property name="configFile" value="infinispan.xml" />
+        -->
+        <!-- END Cluster Configuration -->
+    <!--</bean>-->
+
+</beans>
