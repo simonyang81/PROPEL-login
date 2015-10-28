@@ -73,20 +73,24 @@ angular.module("idmUiApp", ["ngRoute", "ngResource", "ngCookies", "pascalprecht.
 }),
     angular.module("idmUiApp").controller("LoginCtrl", ["$scope", "$routeParams", "authenticationSvc", "organization", "$location", "securityPopupSvc", "tokenStateSvc", "tokenRedirectSvc", "$session",
         function (a, b, c, d, e, f, g, h) {
-    a.credentials = {}, a.credentials.tenantId = b.tenant, a.disabled = !0, a.credentials.tenantId ? (d.use(a.credentials.tenantId), d.get().then(function (b) {
-        a.tenant = b, f.show(), a.disabled = !1;
-        var name = escape("username");
-        var allcookies = document.cookie;
-        name += "=";
-        var pos = allcookies.indexOf(name);
-        if (pos != -1) {
-            var start = pos + name.length;
-            var end = allcookies.indexOf(";", start);
-            if (end == -1) end = allcookies.length;
-            var value = allcookies.substring(start, end);
-            var cookie = unescape(value);
-            a.credentials = {"username": cookie};
-        }
+            var name = escape("username");
+            var allcookies = document.cookie;
+            name += "=";
+            var cookie = "";
+            var pos = allcookies.indexOf(name);
+            if (pos != -1) {
+                var start = pos + name.length;
+                var end = allcookies.indexOf(";", start);
+                if (end == -1) end = allcookies.length;
+                var value = allcookies.substring(start, end);
+                cookie = unescape(value);
+            }
+        a.credentials = {
+            "username": cookie
+        },
+        a.credentials.tenantId = b.tenant, a.disabled = !0, a.credentials.tenantId ? (d.use(a.credentials.tenantId),
+        d.get().then(function (b) {
+        a.tenant = b, f.show(), a.disabled = !1
 
     }, function (a) {
         console.error(a), a.status >= 500 ? e.url("/login/unavailable").replace() : e.url("/login/invalid_tenant").replace()
