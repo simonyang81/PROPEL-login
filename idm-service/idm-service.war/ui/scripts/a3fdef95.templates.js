@@ -7,14 +7,7 @@ angular.module("idmUiApp").run(["$templateCache",function(a){"use strict";a.put(
         '<img src="images/HPE_Helion_Logo.png" width="70px" height="70px">' +
             '<span style="font-size: 0.3em; color: black; vertical-align: middle"><b>HPE</b> Helion Managed Cloud</span>' +
         '</i>' +
-        //'</div>' +
-        //'<div class="col-xs-12">' +
-            //'<h4>{{\'portalTitle\' | orgTranslate}}</h4>' +
-            //'' +
-            //'<h5 class="text-muted">{{\'portalWelcomeMsg\' | orgTranslate}}</h5>' +
-        //'</div>' +
         '</div>' +
-        //'<div>' +
         '<div class="login-bg" ><div class="login-fields login-translucent">' +
         '<div class="row">' +
         '<label for="username" translate="login.username"></label>' +
@@ -25,17 +18,21 @@ angular.module("idmUiApp").run(["$templateCache",function(a){"use strict";a.put(
             '<input id="remember" style="float: right; margin-top: 10px; margin-bottom: 10px; margin-right: 10px" class="mui-switch mui-switch-animbg" type="checkbox" checked onclick="checkRemember();">' +
         '</div>' +
         '</div>' +
-        //'</div>' +
         '' +
         '<div class="row"><div style="width: 100%" "><div id="flash" class="alert-box alert alert-danger" ng-if="message"><i class="icon-alert"></i> <span>{{ message | translate }}</span></div></div></div>' +
         '<div class="row"><div style="width: 100%">' +
             '<input type="submit" id="submit" onclick="javascript:return loginForm();" class="btn btn-primary login-btn btn-block" style="border-radius: 0px 0px 0px 0px; background-color: #15956B; border-color: #0D5D43; font-weight: bold" value="{{ \'login.login\' | translate }}" ng-disabled="disabled"></div></div></div></div>' +
         '' +
-        '<div class="row" style="background-color: #38D2C8"><div class="col-xs-12"><p>{{\'portalFooterMsg\' | orgTranslate}}</p><a ng-href="{{tenant.portalLegalNoticeUrl}}" class="text-primary" target="_blank" ng-show="tenant.portalShowLegalNotice"><span translate="common.privacyStmt"></span></a></div>' +
-        '</div><div class="row" style="background-color: #484848; padding-top: 50px; padding-bottom: 50px">' +
+        //'<div class="row" style="background-color: #38D2C8"><div class="col-xs-12"><p>{{\'portalFooterMsg\' | orgTranslate}}</p><a ng-href="{{tenant.portalLegalNoticeUrl}}" class="text-primary" target="_blank" ng-show="tenant.portalShowLegalNotice"><span translate="common.privacyStmt"></span></a></div>' +
+        //'</div>' +
+        '' +
+        '<div class="login-footer">' +
         '<img src="images/HP_Enterprise_Logo.png" style="margin-left: 50px; margin-bottom: 20px; width: 240px; height: 120px" />' +
         '<div class="row" style="color: #B5B5B5"><span style="float: left; margin-left: 40px;">Helion Managed Cloud | © 2015 Hewlett Packard Enterprise Company, L.P.</span>' +
-        '<span style="float: right; margin-right: 40px;">Terms of use&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Privacy&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Report Bug</span></div>' +
+        '<span style="float: right; margin-right: 40px;">' +
+            '<a href="http://www8.hp.com/us/en/hpe/legal/terms-of-use" target="_blank">Terms of use</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+            '<a href="http://www.hpe.com/us/en/legal/privacy.html" target="_blank">Privacy</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+            'Report Bug</span></div>' +
         '' +
         '</div>' +
         '' +
