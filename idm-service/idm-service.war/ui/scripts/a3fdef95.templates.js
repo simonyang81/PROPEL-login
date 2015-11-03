@@ -12,22 +12,22 @@ angular.module("idmUiApp").run(["$templateCache",function(a){"use strict";a.put(
         '<div class="row" style="margin-left: 0px; margin-right: 0px">' +
         '<label for="username" translate="login.username"></label>' +
         '<input id="username" name="username" class="form-control" type="text" ng-model="credentials.username" autofocus="" ng-disabled="disabled" autocomplete="off">' +
-        '<label for="password" translate="login.password"></label>' +
+        '<label style="margin-top: 5px;" for="password" translate="login.password"></label>' +
         '<input id="password" class="form-control" type="password" ng-model="credentials.password" ng-disabled="disabled" autocomplete="off">' +
-        '<div class="row"><span style="float: left; height: 100%; margin-top: 15px; margin-left: 10px">Remember me</span>' +
+        '<div class="row"><span class="remember_label">Remember me</span>' +
             '<input id="remember" style="float: right; margin-top: 10px; margin-bottom: 10px; margin-right: 10px" class="mui-switch mui-switch-animbg" type="checkbox" checked onclick="checkRemember();">' +
         '</div></div>' +
         '' +
         '<div class="row" style="margin-left: 0px; margin-right: 0px"><div style="width: 100%" "><div id="flash" class="alert-box alert alert-danger" ng-if="message"><i class="icon-alert"></i> <span>{{ message | translate }}</span></div></div></div>' +
         '<div class="row" style="margin-left: 0px; margin-right: 0px"><div style="width: 100%">' +
-            '<input type="submit" id="submit" onclick="javascript:return loginForm();" class="btn btn-primary login-btn btn-block" style="border-radius: 0px 0px 0px 0px; background-color: #15956B; border-color: #0D5D43; font-weight: bold" value="{{ \'login.login\' | translate }}" ng-disabled="disabled"></div></div></div></div>' +
+            '<input type="submit" id="submit" onclick="javascript:return loginForm();" class="btn btn-primary login-btn btn-block btn-submit" style="padding-top: 10px; background-color: #15956B; " value="{{ \'login.login\' | translate }}" ng-disabled="disabled"></div></div></div></div>' +
         '' +
         '<div class="login-footer">' +
         '<img src="images/HP_Enterprise_Logo.png" style="margin-left: 50px; margin-bottom: 20px; width: 240px; height: 120px" />' +
         '<div class="row" style="color: #B5B5B5; margin-left: 0px; margin-right: 0px">' +
         '<span class="login-footer-copyright1">HPE Helion Managed Cloud</span>' +
         '<span class="login-footer-copyright2">| © 2015 Hewlett Packard Enterprise Development, L.P.</span>' +
-        '<span style="float: right; margin-right: 40px;">' +
+        '<span style="float: right; margin-right: 40px; font-family: MetricRegular">' +
             '<a href="http://www8.hp.com/us/en/hpe/legal/terms-of-use" target="_blank">Terms of use</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
             '<a href="http://www.hpe.com/us/en/legal/privacy.html" target="_blank">Privacy</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
             'Report Bug</span></div>' +
