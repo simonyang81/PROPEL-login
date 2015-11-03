@@ -23,10 +23,51 @@
     padding-bottom: 150px;
 }
 
+.login-footer {
+    background-color: #484848;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    border-top: 10px solid #38D2C8;
+}
+
+.login-footer-copyright1 {
+    float: left;
+    margin-left: 40px;
+    font-size: 16px;
+    font-weight:600;
+    color: #C6C9CA;
+}
+
+.login-footer-copyright2 {
+    float: left;
+    font-weight: 400;
+    font-size: 16px;
+    margin-left: 5px;
+    color: #C6C9CA
+}
+
 .btn-primary-76 {
     color: #fff;
     background-color: #15956B;
     border-color: #0D5D43;
+}
+
+@font-face {
+    font-family: MetricRegular;
+    src: url(../fonts/Metric-Regular.otf) format('opentype');
+    font-style: normal;
+}
+
+@font-face {
+    font-family: MetricSemibold;
+    src: url(../fonts/Metric-Semibold.otf) format('opentype');
+    font-style: normal;
+}
+
+@font-face {
+    font-family: MetricThin;
+    src: url(../fonts/Metric-Thin.otf) format('opentype');
+    font-style: normal;
 }
 
 .form-control:focus {
@@ -39,3 +80,5 @@
 input[type=checkbox]:focus {
     outline: none;
 }
+
+
