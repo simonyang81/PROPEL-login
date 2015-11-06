@@ -1,6 +1,13 @@
 .login-76 {
-    margin-top: 10px;
-    margin-left: 50px;
+    margin-left: 0px;
+    margin-right: 0px;
+    background-color: #484848;
+}
+
+.login-header {
+    font-size: 4em;
+    padding-left: 10px;
+    background-color: #FFFFFF;
 }
 
 .login-fields {
@@ -17,17 +24,17 @@
 }
 
 .login-bg {
-    background: url("../images/Login_Splash_Picture.png") no-repeat;
+    background: url("../images/Login_Splash_Picture.png") round;
     background-size: 100%;
-    padding-top: 150px;
-    padding-bottom: 150px;
+    padding-top: 70px;
+    padding-bottom: 70px;
 }
 
 .login-footer {
     background-color: #484848;
     padding-top: 50px;
     padding-bottom: 50px;
-    border-top: 10px solid #38D2C8;
+    border-top: 5px solid #38D2C8;
 }
 
 .login-footer-copyright1 {

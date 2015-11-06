@@ -31,6 +31,7 @@
   <script>
       if (self == top) {
           document.getElementsByTagName("body")[0].style.display = 'block';
+          document.getElementsByTagName("body")[0].style.backgroundColor = '#484848';
       } else {
           top.location = self.location;
       }
