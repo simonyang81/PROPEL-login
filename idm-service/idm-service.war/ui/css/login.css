@@ -24,10 +24,10 @@
 }
 
 .login-bg {
-    background: url("../images/Login_Splash_Picture.png") round;
-    background-size: 100%;
-    padding-top: 70px;
-    padding-bottom: 70px;
+    background: url("../images/Login_Splash_Picture.png");
+    background-size: 100% 100%;
+    padding-top: 60px;
+    padding-bottom: 60px;
 }
 
 .login-footer {
