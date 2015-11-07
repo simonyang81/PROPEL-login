@@ -14,7 +14,6 @@
     <link id="styleLink" rel="stylesheet" href="bower_components/mpp-theme/dist/main.css">
 
     <link rel="stylesheet" type="text/css" href="css/login.css">
-    <link href="css/prettify.css" rel="stylesheet">
     <link href="css/mui-switch.css" rel="stylesheet">
 
 
@@ -86,7 +85,6 @@
 
     <script src="scripts/a3fdef95.templates.js"></script>
 
-    <script src="scripts/prettify.js"></script>
     <script src="scripts/login.js"></script>
 
 </body>

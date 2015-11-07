@@ -15,7 +15,10 @@ angular.module("idmUiApp").run(["$templateCache",function(a){"use strict";a.put(
         '<label style="margin-top: 5px;" for="password" translate="login.password"></label>' +
         '<input id="password" class="form-control" type="password" ng-model="credentials.password" ng-disabled="disabled" autocomplete="off">' +
         '<div class="row"><span class="remember_label">Remember me</span>' +
-            '<input id="remember" style="float: right; margin-top: 10px; margin-bottom: 10px; margin-right: 10px" class="mui-switch mui-switch-animbg" type="checkbox" checked onclick="checkRemember();">' +
+        '' +
+        '<section class="model-2"><div class="checkbox" style="float: right; margin-right: 10px;">' +
+                '<input id="remember" type="checkbox" checked onclick="checkRemember();"><label></label>' +
+        '</div></section>' +
         '</div></div>' +
         '' +
         '<div class="row" style="margin-left: 0px; margin-right: 0px"><div style="width: 100%" "><div id="flash" class="alert-box alert alert-danger" ng-if="message"><i class="icon-alert"></i> <span>{{ message | translate }}</span></div></div></div>' +

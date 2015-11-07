@@ -16,7 +16,7 @@
 }
 
 .login-translucent {
-    padding: 30px;
+    padding: 20px;
     background-color: #FFFFFF;
     filter: alpha(Opacity=80);
     -moz-opacity: 0.8;
@@ -41,7 +41,7 @@
     float: left;
     margin-left: 40px;
     font-size: 16px;
-    /*font-weight:600;*/
+    font-weight:600;
     color: #C6C9CA;
     font-family: MetricSemibold;
 }
@@ -128,8 +128,5 @@ a:active {
     color: #15956B;
 }
 
-input[type=checkbox]:focus {
-    outline: none;
-}
 
 
