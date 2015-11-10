@@ -1,24 +1,24 @@
 @font-face {
     font-family: MetricRegular;
-    src: url(../fonts/Metric-Regular.otf) format('opentype');
+    src: url('../fonts/MetricWeb-Regular.woff') format('woff'), url('../fonts/MetricWeb-Regular.eot') format('eot');
     font-style: normal;
 }
 
 @font-face {
     font-family: MetricSemibold;
-    src: url(../fonts/Metric-Semibold.otf) format('opentype');
+    src: url('../fonts/MetricWeb-Semibold.woff') format('woff'), url('../fonts/MetricWeb-Semibold.eot') format('eot');
     font-style: normal;
 }
 
 @font-face {
     font-family: MetricThin;
-    src: url(../fonts/Metric-Thin.otf) format('opentype');
+    src: url('../fonts/MetricWeb-Thin.woff') format('woff'), url('../fonts/MetricWeb-Thin.eot') format('eot');
     font-style: normal;
 }
 
 @font-face {
     font-family: MetricBold;
-    src: url(../fonts/Metric-Bold.otf) format('opentype');
+    src: url('../fonts/MetricWeb-Bold.woff') format('woff'), url('../fonts/MetricWeb-Bold.eot') format('eot');
     font-style: normal;
 }
 
@@ -56,9 +56,10 @@
 
 .login-footer {
     background-color: #484848;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    border-top: 5px solid #38D2C8;
+    border-top: solid #38D2C8 5px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    height: auto;
 }
 
 .login-footer-copyright1 {
@@ -77,6 +78,35 @@
     margin-left: 5px;
     color: #C6C9CA;
     font-family: MetricThin;
+}
+
+.footer-grid {
+    display: flex;
+    flex-direction: row;
+    -ms-flex-direction: row;
+}
+
+.footer-grid-items {
+    flex: 1 0 auto;
+    -ms-flex: 1 0 auto;
+}
+
+@media all and (max-width: 840px) {
+    .grid_row--md {
+        flex-direction: column;
+        -ms-flex-direction: column;
+    }
+    .footer-support {
+        margin-left: 40px;
+        margin-right: 0px;
+    }
+}
+
+@media all and (max-width: 540px) {
+    .grid_row--sm {
+        flex-direction: column;
+        -ms-flex-direction: column;
+    }
 }
 
 .btn-primary-76 {
@@ -111,9 +141,9 @@
 }
 
 .btn-submit {
-    border-radius: 0px 0px 0px 0px;
+    /*border-radius: 0px 0px 0px 0px;*/
     /*background-color: #15956B;*/
-    border-color: #0D5D43;
+    /*border-color: #0D5D43;*/
     font-family: MetricSemibold;
     font-size: 18px;
 }
@@ -628,7 +658,7 @@ body {
     font-family: "Metric", FontAwesome, "Source Sans Pro", Helvetica, Roboto, Arial, sans-serif;
     font-style: normal;
     font-weight: normal;
-    line-height: 0px;
+    /*line-height: 0px;*/
     margin: 0;
     padding: 0;
     position: relative;
@@ -8786,6 +8816,10 @@ You can also limit to which screen sizes padding or margin will be applied by pr
     .large\-mr0 {
         margin-right: 0 !important;
     }
+}
+
+.login-footer-br {
+    display: none;
 }
 
 .border-default {
