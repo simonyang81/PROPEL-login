@@ -30,7 +30,6 @@
   <script>
       if (self == top) {
           document.getElementsByTagName("body")[0].style.display = 'block';
-          document.getElementsByTagName("body")[0].style.backgroundColor = '#484848';
       } else {
           top.location = self.location;
       }
@@ -71,7 +70,9 @@
       <script src="bower_components/json3/lib/json3.min.js"></script>
     <![endif]-->
 
-    <div ng-view=""></div>
+    <%--<div class="ui-view-root-container full-height">--%>
+    <div ng-view="" class="full-height"></div>
+    <%--</div>--%>
 
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.min.js"></script>
